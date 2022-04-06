@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scr_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".InfoActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="always"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            app:srcCompat="@drawable/logo" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Kindly fill the following details :"
+                android:textSize="20dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/category"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_gravity = "center_vertical"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/ic_category"
+            android:drawableEnd="@drawable/ic_drop_down"
+            android:gravity="center"
+            android:hint="category"
+            android:padding="5dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/days_closed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/ic_day"
+            android:drawableEnd="@drawable/ic_drop_down"
+            android:gravity="center"
+            android:hint="Days on which salon/parlour is closed "
+            android:padding="5dp" />
+
+        <LinearLayout
+            android:id="@+id/lin_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/time_opening"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="left"
+                android:drawableStart="@drawable/ic_time"
+                android:layout_weight="1"
+                android:background="@drawable/custom_edittext"
+                android:gravity="center"
+                android:hint="Opening time"
+                android:inputType="time"
+
+
+                android:padding="5dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="22.5dp"
+                android:layout_marginRight="22.5dp"
+                android:text="to"
+                android:textSize="20dp" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/time_closing"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_time"
+                android:background="@drawable/custom_edittext"
+                android:gravity="center"
+                android:hint="Closing time"
+                android:inputType="time"
+                android:padding="5dp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/seat_aval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/ic_seat"
+            android:drawableEnd="@drawable/ic_drop_down"
+            android:gravity="center"
+            android:hint="Seats available at a same time "
+            android:padding="5dp"
+            android:textAlignment="center" />
+
+
+
+        <LinearLayout
+            android:id="@+id/linear_grid_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Select the available services :"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text=" * Long press a service to get its description"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_haircut"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Haircut"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_haircut"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="5dp"
+                android:tag="haircut"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- male-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_shaving"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Shaving"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_shaving"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:tag="shaving"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+
+            <!-- common-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_hairSpa"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Hair Spa"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_hairSpa"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:tag="hairSpa"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_hairColor"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Hair Color"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_hairColor"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="hairColor"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_bleach"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Bleach"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_bleach"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="bleach"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_hairwash"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Hair Wash"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_hairwash"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="hairWash"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_headmassage"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Head Massage"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_headmassage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="headMassage"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_hairtreatment"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Hair Treatment"
+                android:padding="5dp"/>
+
+
+
+            <GridView
+                android:id="@+id/grid_view_hairtreatment"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="hairTreatment"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_cleanup"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Clean Up"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_cleanup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="cleanUp"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_facial"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Facial"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_facial"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="facial"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_dtan"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="D-Tan"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_dtan"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="dTan"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_pedicure"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Pedicure"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_pedicure"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="pedicure"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_manicure"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Manicure"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_manicure"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="manicure"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_body_polishing"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Body Polishing and Toning"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_body_polishing"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="bodyPolishing"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- male-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_manicurespa"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Manicure Spa"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_manicurespa"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="manicureSpa"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_makeup"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Makeup"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_makeup"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="makeUp"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_hair_styling"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Hair Styling"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_hair_styling"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="hairStyling"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_threading"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Threading"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_threading"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="threading"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_waxing"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Waxing"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_waxing"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="waxing"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_facemask"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="Face Mask"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_facemask"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="faceMask"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <!-- female-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_nailart"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Nail Art and Polish"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_nailart"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="nailArt"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+
+            <!-- common-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category_other"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/gradient_background_round"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Other Services"
+                android:padding="5dp"/>
+
+
+            <GridView
+                android:id="@+id/grid_view_other"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="5dp"
+                android:nestedScrollingEnabled="true"
+                android:tag="others"
+                android:layout_marginTop="20dp"
+                android:columnWidth="100dp"
+                android:numColumns="3">
+
+            </GridView>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linear_save_clear_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_bt_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:rippleColor="@color/purple_700"
+                app:elevation="0dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_check"
+                android:layout_weight="1"
+                app:fabSize="auto"
+                android:backgroundTint="@color/green"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_bt_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                app:elevation="0dp"
+                android:layout_marginBottom="5dp"
+                app:rippleColor="@color/purple_700"
+                android:layout_marginLeft="100dp"
+                app:fabSize="auto"
+                android:backgroundTint="@color/red"
+                android:src="@drawable/ic_cross" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/price_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter price of services shown below :"
+            android:visibility="gone"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginBottom="25dp"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <LinearLayout
+            android:id="@+id/linear_dynamic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/hash"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:backgroundTint="@color/purple_700"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Submit"
+            android:layout_height="wrap_content"/>
+
+
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/upload_image_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:text=""
+            android:layout_marginTop="20dp"/>
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/purple_700"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Choose Salon/Parlour Images "/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/purple_700"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Upload Salon/Parlour Images"/>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/location_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:elevation="0dp"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:text="Add Location"
+                android:backgroundTint="@color/purple_700"/>
+
+            <EditText
+                android:id="@+id/txtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_edittext"
+                android:visibility="gone"
+                android:padding="15dp"/>
+
+            <EditText
+                android:id="@+id/txtPostal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtLat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:padding="15dp"/>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/finalUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_700"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:text="Save Location Data"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</ScrollView>

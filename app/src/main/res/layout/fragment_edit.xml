@@ -1,0 +1,373 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background_round"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="Fragments.EditFragment">
+
+    <ImageView
+        android:id="@+id/btn_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_refresh"
+        android:clickable="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="end"/>
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/logo" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="These are salon details :"
+            android:layout_marginBottom="20dp"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+       android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center_vertical"
+                android:layout_marginTop="25dp"
+                android:clickable="true"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableStart="@drawable/ic_category"
+                android:gravity="center"
+                android:hint="category"
+                android:padding="5dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/days_closed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="25dp"
+                android:clickable="true"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableStart="@drawable/ic_day"
+
+                android:gravity="center"
+                android:hint="Days on which salon/parlour is closed "
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:id="@+id/lin_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/time_opening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:drawableStart="@drawable/ic_time"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_edittext"
+                    android:gravity="center"
+                    android:hint="Opening time"
+                    android:inputType="time"
+
+
+                    android:padding="5dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22.5dp"
+                    android:layout_marginRight="22.5dp"
+                    android:text="to"
+                    android:textSize="20dp" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/time_closing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_time"
+                    android:background="@drawable/custom_edittext"
+                    android:gravity="center"
+                    android:hint="Closing time"
+                    android:inputType="time"
+                    android:padding="5dp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/seat_aval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableStart="@drawable/ic_seat"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:hint="Seats available at a same time "
+                android:padding="5dp"
+                android:textAlignment="center" />
+
+
+
+            <LinearLayout
+                android:id="@+id/title_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HairCut"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HairColor"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serv_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_haircut"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="haircut"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    style="@style/line"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_haircolor"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="hairColor"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                style="@style/line"/>
+
+
+            <LinearLayout
+                android:id="@+id/title_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Shaving"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bleach"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serv_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_shaving"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="shaving"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    style="@style/line"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_bleach"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="bleach"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                style="@style/line"/>
+
+
+
+            <LinearLayout
+                android:id="@+id/title_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HairSpa"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Other Sevices"
+                    android:fontFamily="@font/lato_black"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/serv_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_hairspa"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="hairSpa"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    style="@style/line"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/edit_recycler_others"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:tag="others"
+                    android:layout_weight="1"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                style="@style/line"/>
+
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add More Services"
+                android:backgroundTint="@color/purple_700"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>
