@@ -55,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
     private  TextView getotp , otpsent , resendOTP , countdowntimer , auto_capture , already_user ;
     private boolean getotpclicked = false;
     Dialog dialog;
+    Dialog dialog1 ;
     FirebaseUser user;
     private DatabaseReference mRootRef;
     private DatabaseReference mPhoneRef;
@@ -204,11 +205,11 @@ public class RegisterActivity extends AppCompatActivity {
 
             InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-            dialog = new Dialog(RegisterActivity.this);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dialog_wait);
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
+            dialog1 = new Dialog(RegisterActivity.this);
+            dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog1.setContentView(R.layout.dialog_wait);
+            dialog1.setCanceledOnTouchOutside(false);
+            dialog1.show();
             verifyCode(otp1);
 
 
@@ -260,7 +261,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 if (dialog != null){
 
-                                    dialog.dismiss();
+                                    dialog1.dismiss();
                                     Toast.makeText(RegisterActivity.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -317,8 +318,8 @@ public class RegisterActivity extends AppCompatActivity {
         public void onCodeSent(@NonNull String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
 
             dialog.dismiss();
-            otpsent.setText("OTP has been sent yo your mobile number");
-            otpsent.setVisibility(View.VISIBLE);
+            //otpsent.setText("OTP has been sent yo your mobile number");
+            //otpsent.setVisibility(View.VISIBLE);
             super.onCodeSent(s, forceResendingToken);
             verificationId = s;
 
@@ -472,7 +473,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 phoneNo.setText("");
-
+                dialog1.dismiss();
                 Toast.makeText(RegisterActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(RegisterActivity.this,InfoActivity.class);
                 startActivity(i);
