@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_edit"
             android:icon="@drawable/ic_edit"
-            android:title="Change salon info"
+            android:title="Edit salon info"
             android:iconTintMode="add"/>
 
         <item
