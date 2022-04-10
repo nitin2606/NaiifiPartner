@@ -15,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import com.example.naiifipartner.R;
@@ -47,6 +49,7 @@ public class EditFragment extends Fragment {
     private RecyclerView edit_recycler_haircut , edit_recycler_haircolor , edit_recycler_shaving , edit_recycler_bleach , edit_recycler_others , edit_recycler_hairspa;
 
     private MaterialTextView category ,days_closed , time_opening , time_closing , seat_aval ;
+    private ProgressBar haircut , hairColor , shaving , bleach , others , hairSpa ;
 
 
     String[] items =  {"Unisex Salon (Male and Female Both)", "Male Salon","Female Salon"};
@@ -71,6 +74,13 @@ public class EditFragment extends Fragment {
         edit_recycler_hairspa = view.findViewById(R.id.edit_recycler_hairspa);
         edit_recycler_others = view.findViewById(R.id.edit_recycler_others);
 
+        haircut = view.findViewById(R.id.haircut);
+        hairColor = view.findViewById(R.id.hairColor);
+        shaving = view.findViewById(R.id.shaving);
+        bleach = view.findViewById(R.id.bleach);
+        hairSpa = view.findViewById(R.id.hairSpa);
+        others  = view.findViewById(R.id.others);
+
         category = view.findViewById(R.id.category);
         days_closed = view.findViewById(R.id.days_closed);
         time_opening = view.findViewById(R.id.time_opening);
@@ -89,12 +99,12 @@ public class EditFragment extends Fragment {
 
         setBasicData();
 
-        service_category("haircut",edit_recycler_haircut);
-        service_category("hairColor",edit_recycler_haircolor);
-        service_category("bleach" , edit_recycler_bleach);
-        service_category("shaving",edit_recycler_shaving);
-        service_category("hairSpa" , edit_recycler_hairspa);
-        service_category("others", edit_recycler_others);
+        service_category("haircut",edit_recycler_haircut , haircut);
+        service_category("hairColor",edit_recycler_haircolor , hairColor);
+        service_category("bleach" , edit_recycler_bleach , bleach);
+        service_category("shaving",edit_recycler_shaving , shaving);
+        service_category("hairSpa" , edit_recycler_hairspa , hairSpa);
+        service_category("others", edit_recycler_others , others);
 
         category.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -141,7 +151,7 @@ public class EditFragment extends Fragment {
 
     }
 
-    private void service_category(String category , RecyclerView recyclerView){
+    private void service_category(String category , RecyclerView recyclerView  , ProgressBar progressBar){
 
         ArrayList<String> serv_category=new ArrayList<>();
 
@@ -163,7 +173,7 @@ public class EditFragment extends Fragment {
                         for(int i=0 ; i< arr.length ; i++){
                             serv_category.add(arr[i].trim());
                         }
-                        create_edt_recyclr(recyclerView , serv_category);
+                        create_edt_recyclr(recyclerView , serv_category , progressBar);
 
                     }
                     catch(Exception e){
@@ -182,9 +192,9 @@ public class EditFragment extends Fragment {
 
     }
 
-    private void create_edt_recyclr(RecyclerView recyclerView , ArrayList<String> arrayList){
+    private void create_edt_recyclr(RecyclerView recyclerView , ArrayList<String> arrayList , ProgressBar progressBar){
 
-
+        progressBar.setVisibility(View.VISIBLE);
         String t = recyclerView.getTag().toString().trim();
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -193,7 +203,17 @@ public class EditFragment extends Fragment {
         editDataAdapter = new EditDataAdapter(arrayList , getContext() , t);
         recyclerView.setAdapter(editDataAdapter);
 
-        //int count = recyclerView.getAdapter().getItemCount();
+        int count = recyclerView.getAdapter().getItemCount();
+
+        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                progressBar.setVisibility(View.GONE);
+                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+
 
 
     }
@@ -397,12 +417,12 @@ public class EditFragment extends Fragment {
 
             //this method will be running on UI thread
 
-            service_category("haircut",edit_recycler_haircut);
-            service_category("hairColor",edit_recycler_haircolor);
-            service_category("bleach" , edit_recycler_bleach);
-            service_category("shaving",edit_recycler_shaving);
-            service_category("hairSpa" , edit_recycler_hairspa);
-            service_category("others", edit_recycler_others);
+            service_category("haircut",edit_recycler_haircut , haircut);
+            service_category("hairColor",edit_recycler_haircolor , hairColor);
+            service_category("bleach" , edit_recycler_bleach , bleach);
+            service_category("shaving",edit_recycler_shaving , shaving);
+            service_category("hairSpa" , edit_recycler_hairspa , hairSpa);
+            service_category("others", edit_recycler_others , others);
 
 
         }

@@ -184,30 +184,65 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_haircut"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="haircut"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/haircut"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_haircut"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="haircut"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     style="@style/line"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_haircolor"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="hairColor"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/hairColor"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_haircolor"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="hairColor"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
 
             </LinearLayout>
 
@@ -252,28 +287,65 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_shaving"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="shaving"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/shaving"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_shaving"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="shaving"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     style="@style/line"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_bleach"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="bleach"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/bleach"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_bleach"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="bleach"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
+
 
             </LinearLayout>
 
@@ -319,28 +391,64 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_hairspa"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="hairSpa"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/hairSpa"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_hairspa"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="hairSpa"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     style="@style/line"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/edit_recycler_others"
+                <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:tag="others"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:layout_gravity="center">
+
+                    <ProgressBar
+                        android:id="@+id/others"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:visibility="visible"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/edit_recycler_others"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:tag="others"
+                        android:layout_weight="1"
+                        android:orientation="vertical" />
+
+
+                </FrameLayout>
+
+
 
             </LinearLayout>
 
