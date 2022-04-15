@@ -190,6 +190,16 @@
                     android:layout_weight="1"
                     android:layout_gravity="center">
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_haircut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
+
                     <ProgressBar
                         android:id="@+id/haircut"
                         android:layout_width="100dp"
@@ -222,6 +232,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_haircolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
 
                     <ProgressBar
                         android:id="@+id/hairColor"
@@ -293,6 +313,16 @@
                     android:layout_weight="1"
                     android:layout_gravity="center">
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_shaving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
+
                     <ProgressBar
                         android:id="@+id/shaving"
                         android:layout_width="100dp"
@@ -324,6 +354,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_bleach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
 
                     <ProgressBar
                         android:id="@+id/bleach"
@@ -396,6 +436,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_hairspa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
 
                     <ProgressBar
                         android:id="@+id/hairSpa"
@@ -428,6 +477,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="20sp"
+                        android:visibility="gone"
+                        android:text="No Services Selected"/>
 
                     <ProgressBar
                         android:id="@+id/others"
