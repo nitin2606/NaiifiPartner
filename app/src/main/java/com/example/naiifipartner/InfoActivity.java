@@ -1,6 +1,7 @@
 package com.example.naiifipartner;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -25,10 +26,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -56,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import Adapter.GridViewAdapter;
 
@@ -103,8 +103,10 @@ public class InfoActivity extends AppCompatActivity {
     private ArrayList<String> arraylist1;
     private ArrayList<String> arrayList2;
 
+    //private ArrayList<String> services ;
+
     private HashMap<String , Integer> idsMap  ;
-    private ArrayList<String> total_services = new ArrayList<>();
+    //private ArrayList<String> total_services = new ArrayList<>();
 
 
 
@@ -121,6 +123,8 @@ public class InfoActivity extends AppCompatActivity {
     private Dialog dialog;
 
     private HashMap<String , Object> grid_data_map ;
+
+
 
 
 
@@ -216,7 +220,7 @@ public class InfoActivity extends AppCompatActivity {
         finalUpload = findViewById(R.id.finalUpload);
 
 
-        grid_txt  = findViewById(R.id.item_txt);
+        grid_txt = findViewById(R.id.item_txt);
         scr_view = findViewById(R.id.scr_view);
         scr_view.setSmoothScrollingEnabled(true);
         information =findViewById(R.id.information);
@@ -275,7 +279,7 @@ public class InfoActivity extends AppCompatActivity {
 
         String[] seats =  {"1","2","3","4","5","6","7","8","9","10","11"};
 
-        String[] services = {"Java","Python","Ruby","HTML","C++","React","JSON"};
+        //String[] services = {"Java","Python","Ruby","HTML","C++","React","JSON"};
 
 
         time_opening.setOnClickListener(new View.OnClickListener() {
@@ -307,9 +311,10 @@ public class InfoActivity extends AppCompatActivity {
                 }
 
                 else{
-                    uploadData();
+                    uploadBasicData();
 
                 }
+                //uploadBasicData();
 
 
             }
@@ -334,6 +339,9 @@ public class InfoActivity extends AppCompatActivity {
                         submit.setVisibility(View.VISIBLE);
                         scr_view.smoothScrollBy(0,80000);
                         //System.out.println(grid_data_map);
+                        System.out.println(grid_data_map);
+
+
                     }
 
                 }
@@ -678,6 +686,7 @@ public class InfoActivity extends AppCompatActivity {
         grid_data_map = new HashMap<>();
         selectedStrings = new ArrayList<>();
         ArrayList<String> services = new ArrayList<>();
+        //services = new ArrayList<>();
 
         final GridViewAdapter adapter = new GridViewAdapter(arr, this);
         gridView.setAdapter(adapter);
@@ -705,7 +714,21 @@ public class InfoActivity extends AppCompatActivity {
                     services.add((String) parent.getItemAtPosition(position));
                     String t = gridView.getTag().toString();
                     String serv = services.toString();
-                    grid_data_map.put(t,serv);
+                    StringBuffer stringBuffer = new StringBuffer();
+                    for(int i = 0 ; i<services.size() ; i++){
+
+
+                        if(i==services.size()-1){
+                            stringBuffer.append(services.get(i));
+                        }
+                        else {
+                            stringBuffer.append(services.get(i)+";");
+                        }
+                    }
+                    grid_data_map.put(t,stringBuffer);
+
+
+
 
 
                 }
@@ -756,24 +779,61 @@ public class InfoActivity extends AppCompatActivity {
 
     }
 
-    private HashMap<String , Object> retrieve_edt_data(LinearLayout linearLayout){
+    private HashMap<String , String> retrieve_edt_data(LinearLayout linearLayout){
 
 
-        HashMap<String , Object> dataMap = new HashMap<>();
+        HashMap<String , String> dataMap = new HashMap<>();
         EditText editText = new EditText(this);
 
         for(int i=0 ; i<linearLayout.getChildCount();i++){
             editText = (EditText) linearLayout.getChildAt(i);
             String tag = linearLayout.getChildAt(i).getTag().toString();
             String data  = editText.getText().toString();
-            dataMap.put(tag,data);
+            dataMap.put(tag.trim(),data.trim());
 
         }
+
         return  dataMap;
 
     }
 
-    private void uploadData(){
+    @SuppressLint("NewApi")
+    /*private void testing(){
+
+
+
+        mAuth=FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid().toString();
+
+        mRootRef = FirebaseDatabase.getInstance().getReference(user);
+
+        for(Map.Entry<String , Object> entry : grid_data_map.entrySet()){
+            String key = entry.getKey();
+            String value = entry.getValue().toString().trim();
+            String data = value;
+            grid_data_map.replace(key , data);
+        }
+
+        db.collection(user).document("serviceData").set(grid_data_map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                System.out.println("Service data uploaded successfully");
+            }
+        });
+
+
+        db.collection(user).document("priceData").set(retrieve_edt_data(linear_dynamic)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                System.out.println("All prices uploaded successfully");
+
+            }
+        });
+
+
+    }*/
+
+    private void uploadBasicData(){
 
 
         dialog.show();
@@ -799,6 +859,7 @@ public class InfoActivity extends AppCompatActivity {
         basicData.put("salonStatus","open");
         basicData.put("currentSeats",availableSeats);
 
+
         try{
 
             db.collection(user).document("basicData").set(basicData).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -806,45 +867,58 @@ public class InfoActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
 
-                        db.collection(user).document("serviceDataPrice").set(retrieve_edt_data(linear_dynamic)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        Log.d("myTag", "BASIC DATA uploaded Successfully");
+
+                        for(Map.Entry<String , Object> entry : grid_data_map.entrySet()){
+                            String key = entry.getKey();
+                            String value = entry.getValue().toString().trim();
+                            String data = value;
+                            grid_data_map.replace(key , data);
+                        }
+
+                        db.collection(user).document("serviceData").set(grid_data_map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-
-                                    db.collection(user).document("serviceCategory").set(grid_data_map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
-
-                                                Toast.makeText(InfoActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
-
-                                                text_layout1.setVisibility(View.GONE);
-                                                category_txt.setVisibility(View.GONE);
-                                                days_closed.setVisibility(View.GONE);
-                                                lin_time.setVisibility(View.GONE);
-                                                seat_aval.setVisibility(View.GONE);
-                                                linear_grid_data.setVisibility(View.GONE);
-                                                linear_save_clear_bt.setVisibility(View.GONE);
-                                                price_instruction.setVisibility(View.GONE);
-                                                linear_dynamic.setVisibility(View.GONE);
-                                                submit.setVisibility(View.GONE);
-
-                                                btnChoose.setVisibility(View.VISIBLE);
-
-                                                dialog.dismiss();
-
-                                            }
-
-                                        }
-                                    });
-
-
+                                if(task.isSuccessful()){
+                                    Log.d("myTag","Service DataUploaded Successfully");
                                 }
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(InfoActivity.this, "Price data error", Toast.LENGTH_SHORT).show();
+                                Log.d("ErrorTag", "Service Data Not Upoaded");
+                            }
+                        });
+
+
+                        db.collection(user).document("priceData").set(retrieve_edt_data(linear_dynamic)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Log.d("myTag","Price Data Uploaded Successfully .");
+                                    dialog.dismiss();
+                                    text_layout1.setVisibility(View.GONE);
+                                    category_txt.setVisibility(View.GONE);
+                                    days_closed.setVisibility(View.GONE);
+                                    lin_time.setVisibility(View.GONE);
+                                    seat_aval.setVisibility(View.GONE);
+                                    linear_grid_data.setVisibility(View.GONE);
+                                    linear_save_clear_bt.setVisibility(View.GONE);
+                                    price_instruction.setVisibility(View.GONE);
+                                    linear_dynamic.setVisibility(View.GONE);
+                                    submit.setVisibility(View.GONE);
+
+                                    upload_image_txt.setVisibility(View.VISIBLE);
+                                    btnChoose.setVisibility(View.VISIBLE);
+                                }
+
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("ErrorTag","Price Data Not Uploaded");
                             }
                         });
                     }
@@ -857,10 +931,9 @@ public class InfoActivity extends AppCompatActivity {
             });
 
 
-
         }
         catch (Exception e){
-            Log.d("Upload error", e.getMessage());
+            Log.d("myTag", "Basic Data Error "+e.getMessage());
         }
 
 
@@ -979,18 +1052,27 @@ public class InfoActivity extends AppCompatActivity {
                         if (resultCode == RESULT_OK) {
                             if (data.getClipData() != null) {
                                 int count = data.getClipData().getItemCount();
-
-                                int CurrentImageSelect = 0;
-
-                                while (CurrentImageSelect < count) {
-                                    Uri imageuri = data.getClipData().getItemAt(CurrentImageSelect).getUri();
-                                    ImageList.add(imageuri);
-                                    CurrentImageSelect = CurrentImageSelect + 1;
+                                if(count>4){
+                                    Toast.makeText(this, "At max only 4 images can be selected ! Reselect images .", Toast.LENGTH_SHORT).show();
                                 }
-                                upload_image_txt.setVisibility(View.VISIBLE);
-                                upload_image_txt.setText("You Have Selected "+ ImageList.size() +" Pictures" );
-                                btnChoose.setVisibility(View.GONE);
-                                btnUpload.setVisibility(View.VISIBLE);
+                                else{
+
+                                    int CurrentImageSelect = 0;
+
+                                    while (CurrentImageSelect < count) {
+                                        Uri imageuri = data.getClipData().getItemAt(CurrentImageSelect).getUri();
+                                        ImageList.add(imageuri);
+                                        CurrentImageSelect = CurrentImageSelect + 1;
+                                    }
+
+                                    upload_image_txt.setVisibility(View.VISIBLE);
+                                    upload_image_txt.setText("You Have Selected "+ ImageList.size() +" Pictures" );
+                                    btnChoose.setVisibility(View.GONE);
+                                    btnUpload.setVisibility(View.VISIBLE);
+
+                                }
+
+
                             }
 
                         }
@@ -1058,7 +1140,8 @@ public class InfoActivity extends AppCompatActivity {
         dialog.show();
         String user = mAuth.getCurrentUser().getUid().toString();
 
-        upload_image_txt.setText("Please Wait ... If Uploading takes Too much time please the button again ");
+
+        upload_image_txt.setText("Please Wait ... If Uploading takes Too much time please click the button again ");
 
         int c=0;
         final StorageReference ImageFolder =  FirebaseStorage.getInstance().getReference().child(user);
@@ -1067,7 +1150,7 @@ public class InfoActivity extends AppCompatActivity {
 
             String field = "url"+Integer.toString(uploads);
             Uri Image  = ImageList.get(uploads);
-            final StorageReference imagename = ImageFolder.child("image/"+Image.getLastPathSegment());
+            final StorageReference imagename = ImageFolder.child("image/");
 
 
 

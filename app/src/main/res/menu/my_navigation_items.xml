@@ -19,6 +19,11 @@
             android:icon="@drawable/ic_seat_item"
             android:title="Current avalilable seats"/>
 
+        <item
+            android:id="@+id/salon_images"
+            android:icon="@drawable/ic_image"
+            android:title="Salon Images"/>
+
 
         <item
             android:id="@+id/nav_settings"

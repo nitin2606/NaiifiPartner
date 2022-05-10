@@ -39,6 +39,7 @@ import java.util.HashMap;
 import Fragments.EditFragment;
 import Fragments.HelpFragment;
 import Fragments.HomeFragment;
+import Fragments.ImageFragment;
 import Fragments.InsightsFragment;
 import Fragments.SettingsFragment;
 
@@ -142,8 +143,13 @@ public class DashboardActivity extends AppCompatActivity {
                         navFragment = new EditFragment();
                         drawerLayout.closeDrawer(GravityCompat.START);
 
-
                         break;
+
+                    case R.id.salon_images:
+                        navFragment = new ImageFragment();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
 
                     case R.id.current_seat:
 

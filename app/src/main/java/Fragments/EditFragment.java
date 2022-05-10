@@ -186,6 +186,8 @@ public class EditFragment extends Fragment {
 
                     }
                     catch(Exception e){
+                        create_edt_recyclr(recyclerView , serv_category , progressBar , materialTextView);
+
 
                     }
 

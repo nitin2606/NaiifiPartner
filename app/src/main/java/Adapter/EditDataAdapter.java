@@ -78,6 +78,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
         return serviceData.size();
     }
 
+
     public class EditDataViewHolder extends RecyclerView.ViewHolder{
 
 
@@ -262,7 +263,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         String user = mAuth.getCurrentUser().getUid().toString();
-        System.out.println("This is recyclerviwe tag: "+t);
+        //System.out.println("This is recyclerviwe tag: "+t);
 
         db.collection(user).document("serviceCategory").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

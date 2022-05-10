@@ -2,7 +2,6 @@
     <string name="app_name">Naiifi Partner</string>
 
 
-
     <string name="addressline1_hint">Enter Flat No / Floor / Landmark </string>
     <string name="edittext_hint">"Click here to edit address location"</string>
     <!-- TODO: Remove or change this placeholder text -->

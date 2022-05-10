@@ -61,6 +61,7 @@
                 android:layout_gravity = "center_vertical"
                 android:layout_marginTop="25dp"
                 android:clickable="true"
+                android:paddingEnd="40dp"
                 android:layout_marginHorizontal="5dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/ic_category"
@@ -75,6 +76,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="25dp"
                 android:clickable="true"
+                android:paddingEnd="40dp"
                 android:layout_marginHorizontal="5dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/ic_day"
@@ -102,6 +104,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/custom_edittext"
                     android:gravity="center"
+                    android:paddingEnd="40dp"
                     android:hint="Opening time"
                     android:inputType="time"
 
@@ -128,6 +131,7 @@
                     android:background="@drawable/custom_edittext"
                     android:gravity="center"
                     android:hint="Closing time"
+                    android:paddingEnd="40dp"
                     android:inputType="time"
                     android:padding="5dp" />
 
@@ -143,6 +147,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:gravity="center"
                 android:clickable="true"
+                android:paddingEnd="40dp"
                 android:hint="Seats available at a same time "
                 android:padding="5dp"
                 android:textAlignment="center" />
