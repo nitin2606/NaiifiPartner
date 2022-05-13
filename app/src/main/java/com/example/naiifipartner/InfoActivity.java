@@ -255,7 +255,7 @@ public class InfoActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                upload();
+                uploadImages();
 
             }
         });
@@ -1133,7 +1133,7 @@ public class InfoActivity extends AppCompatActivity {
 
     }
 
-    public void upload() {
+    public void uploadImages() {
 
         mAuth=FirebaseAuth.getInstance();
         arr =new ArrayList<>();
@@ -1150,7 +1150,7 @@ public class InfoActivity extends AppCompatActivity {
 
             String field = "url"+Integer.toString(uploads);
             Uri Image  = ImageList.get(uploads);
-            final StorageReference imagename = ImageFolder.child("image/");
+            final StorageReference imagename = ImageFolder.child("image/"+Image.getLastPathSegment());
 
 
 
@@ -1166,8 +1166,8 @@ public class InfoActivity extends AppCompatActivity {
                             String url = String.valueOf(uri);
 
                             arr.add(url);
-                            System.out.println(arr);
-                            System.out.println(ImageList.size());
+                            //System.out.println(arr);
+                            //System.out.println(ImageList.size());
 
                             upload_image_txt.setVisibility(View.GONE);
                             SendLink();
