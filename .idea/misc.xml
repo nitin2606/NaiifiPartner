@@ -19,6 +19,10 @@
         <entry key="..\:/NaiifiPartner/app/src/main/res/layout/fragment_image.xml" value="0.25" />
         <entry key="..\:/NaiifiPartner/app/src/main/res/menu/my_navigation_items.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.328125" />
+        <entry key="app/src/main/res/layout/basic_edit_layout.xml" value="0.32135416666666666" />
+        <entry key="app/src/main/res/layout/custom_edit_confirm.xml" value="0.32135416666666666" />
+        <entry key="app/src/main/res/layout/custom_edit_layout.xml" value="0.32135416666666666" />
+        <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.32135416666666666" />
       </map>
     </option>
   </component>

@@ -168,15 +168,15 @@ public class EditFragment extends Fragment {
         mAuth=FirebaseAuth.getInstance();
         String user = mAuth.getCurrentUser().getUid().toString();
 
-        db.collection(user).document("serviceCategory").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     try{
                         String data = task.getResult().get(category).toString();
-                        data = data.substring(1, data.length() - 1);
 
-                        String[] arr = data.split(",");
+
+                        String[] arr = data.split(";");
 
 
                         for(int i=0 ; i< arr.length ; i++){

@@ -26,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +69,6 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
         servicePrice(serviceData.get(position), holder.service_price );
 
 
-
     }
 
 
@@ -95,9 +95,9 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
                 @Override
                 public boolean onLongClick(View v) {
                     String serv = service_name.getText().toString().trim();
-                    serv = serv.replace("Service :","");
+                    serv = serv.replace("Service : ","").trim();
                     String pr = service_price.getText().toString().trim();
-                    pr = pr.replace("Price:","");
+                    pr = pr.replace("Price: ","").trim();
                     updateServiceData(service_price,serv,pr ,tag ,getAdapterPosition() );
 
 
@@ -116,7 +116,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
         try{
 
-            db.collection(user).document("serviceDataPrice").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            db.collection(user).document("priceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
@@ -241,11 +241,11 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
                     map.put(service.trim() , price);
 
 
-                    db.collection(user).document("serviceDataPrice").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection(user).document("priceData").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                materialTextView.setText("Price:"+price);
+                                materialTextView.setText("Price: "+price);
                                 dialog_edit.dismiss();
                                 dialog1.dismiss();
                                 Toast.makeText(mContext, "Price updated successfully.", Toast.LENGTH_SHORT).show();
@@ -265,35 +265,41 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
         String user = mAuth.getCurrentUser().getUid().toString();
         //System.out.println("This is recyclerviwe tag: "+t);
 
-        db.collection(user).document("serviceCategory").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     String s = task.getResult().get(t).toString();
-                    String rep ;
-                    System.out.println(s);
 
-                    if(s.substring(1,(service.trim().length()+1)).equals(service.trim())){
-                        rep = service.trim()+", ";
+                    String[] arr = s.split(";");
+
+                    String arr1[]  = new String[arr.length-1];
+
+                    for(int i=0 , k=0 ; i<arr.length ; i++){
+                        if(!service.equals(arr[i])){
+
+                            arr1[k] = arr[i];
+                            k++;
+                        }
                     }
-                    else{
-                        rep = ", "+service.trim();
 
-                    }
-                    System.out.println("This is replacement: "+rep);
-                    s=s.replace(rep ,"");
+                    String modifiedData = Arrays.toString(arr1);
 
-                    System.out.println(s);
+                    //modifiedData = modifiedData.replace(" ","");
+                    modifiedData = modifiedData.replace(", ",";");
+                    modifiedData = modifiedData.replace("[","");
+                    modifiedData = modifiedData.replace("]","");
+
 
                     HashMap<String , Object> map = new HashMap<>();
-                    map.put(t,s);
+                    map.put(t,modifiedData);
 
-                    db.collection(user).document("serviceCategory").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection(user).document("serviceData").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
 
-                                DocumentReference docRef = db.collection(user).document("serviceDataPrice");
+                                DocumentReference docRef = db.collection(user).document("priceData");
 
                                 Map<String,Object> updates = new HashMap<>();
                                 updates.put(service.trim(), FieldValue.delete());
