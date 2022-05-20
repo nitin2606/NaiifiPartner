@@ -30,6 +30,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import Fragments.EditFragment;
+
 
 public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDataViewHolder> {
 
@@ -260,6 +262,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
     private void deleteData(String service , String t ,int pos){
 
+
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         String user = mAuth.getCurrentUser().getUid().toString();
@@ -273,53 +276,86 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
                     String[] arr = s.split(";");
 
-                    String arr1[]  = new String[arr.length-1];
+                    if(arr.length==1){
+                        Map<String ,Object> temp = new HashMap<>();
+                        temp.put(t.trim(),FieldValue.delete());
+                        db.collection(user).document("serviceData").update(temp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    temp.clear();
+                                    temp.put(service.trim() , FieldValue.delete());
 
-                    for(int i=0 , k=0 ; i<arr.length ; i++){
-                        if(!service.equals(arr[i])){
+                                    db.collection(user).document("priceData").update(temp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                EditFragment editFragment = new EditFragment();
 
-                            arr1[k] = arr[i];
-                            k++;
-                        }
+                                                //editFragment.referenceMethod();
+                                                Toast.makeText(mContext, "Data Deleted Successfully .", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
                     }
 
-                    String modifiedData = Arrays.toString(arr1);
+                    else{
+                        String arr1[]  = new String[arr.length-1];
 
-                    //modifiedData = modifiedData.replace(" ","");
-                    modifiedData = modifiedData.replace(", ",";");
-                    modifiedData = modifiedData.replace("[","");
-                    modifiedData = modifiedData.replace("]","");
+                        for(int i=0 , k=0 ; i<arr.length ; i++){
+                            if(!service.equals(arr[i])){
 
-
-                    HashMap<String , Object> map = new HashMap<>();
-                    map.put(t,modifiedData);
-
-                    db.collection(user).document("serviceData").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-
-                                DocumentReference docRef = db.collection(user).document("priceData");
-
-                                Map<String,Object> updates = new HashMap<>();
-                                updates.put(service.trim(), FieldValue.delete());
-
-                                docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-
-
-                                            Toast.makeText(mContext, "Data deleted successfully .", Toast.LENGTH_SHORT).show();
-
-                                        }
-
-                                    }
-                                });
-
+                                arr1[k] = arr[i];
+                                k++;
                             }
                         }
-                    });
+
+                        String modifiedData = Arrays.toString(arr1);
+
+                        //modifiedData = modifiedData.replace(" ","");
+                        modifiedData = modifiedData.replace(", ",";");
+                        modifiedData = modifiedData.replace("[","");
+                        modifiedData = modifiedData.replace("]","");
+
+
+                        HashMap<String , Object> map = new HashMap<>();
+                        map.put(t,modifiedData);
+
+                        db.collection(user).document("serviceData").update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+
+                                    DocumentReference docRef = db.collection(user).document("priceData");
+
+                                    Map<String,Object> updates = new HashMap<>();
+                                    updates.put(service.trim(), FieldValue.delete());
+
+                                    docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()){
+
+
+                                                Toast.makeText(mContext, "Data deleted successfully .", Toast.LENGTH_SHORT).show();
+
+                                            }
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        });
+
+                    }
+
+
+
                 }
             }
         });

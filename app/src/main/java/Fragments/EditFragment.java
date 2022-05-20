@@ -30,6 +30,8 @@ import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -173,8 +175,8 @@ public class EditFragment extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     try{
-                        String data = task.getResult().get(category).toString();
 
+                        String data = task.getResult().get(category).toString();
 
                         String[] arr = data.split(";");
 
@@ -231,6 +233,9 @@ public class EditFragment extends Fragment {
         if (arrayList.isEmpty()){
             progressBar.setVisibility(View.GONE);
             materialTextView.setVisibility(View.VISIBLE);
+        }
+        else{
+            materialTextView.setVisibility(View.GONE);
         }
 
 
@@ -445,6 +450,16 @@ public class EditFragment extends Fragment {
 
         }
 
+    }
+
+    public void referenceMethod(){
+
+        service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+        service_category("hairColor",edit_recycler_haircolor , hairColor , text_haircolor);
+        service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
+        service_category("shaving",edit_recycler_shaving , shaving , text_shaving);
+        service_category("hairSpa" , edit_recycler_hairspa , hairSpa , text_hairspa);
+        service_category("others", edit_recycler_others , others , text_others);
     }
 }
 

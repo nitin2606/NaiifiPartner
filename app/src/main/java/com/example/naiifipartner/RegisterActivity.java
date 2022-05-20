@@ -363,7 +363,7 @@ public class RegisterActivity extends AppCompatActivity {
         public void onVerificationFailed(@NonNull FirebaseException e) {
 
             getotpclicked = false;
-            getotp.setTextColor(Color.parseColor("00000FF"));
+            //getotp.setTextColor(Color.parseColor("00000FF"));
             Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
 
         }
