@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext_nt"
+        android:background="@drawable/editbox_gradient_background"
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView

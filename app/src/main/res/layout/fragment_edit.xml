@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient_background_round"
+    android:background="@drawable/custom_gradient_layout_edtifragment"
     android:orientation="vertical"
     android:padding="5dp"
     tools:context="Fragments.EditFragment">
@@ -26,6 +26,9 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         app:srcCompat="@drawable/logo" />
+
+
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -153,385 +156,1765 @@
                 android:textAlignment="center" />
 
 
-
             <LinearLayout
-                android:id="@+id/title_1"
+                android:id="@+id/common_services"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/title_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HairCut"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HairColor"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/serv_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_haircut"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/haircut"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_haircut"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="haircut"
                         android:layout_weight="1"
-                        android:orientation="vertical" />
+                        android:text="HairCut"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
 
 
-                </FrameLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HairColor"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/serv_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_haircut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+                        <ProgressBar
+                            android:id="@+id/haircut"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_haircut"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="haircut"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_hairColor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/hairColor"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_hairColor"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairColor"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="10dp"
+                    style="@style/line"/>
+
+
+                <LinearLayout
+                    android:id="@+id/title_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Shaving"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bleach"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/serv_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_shaving"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/shaving"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_shaving"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="shaving"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_bleach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/bleach"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_bleach"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="bleach"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HairWash"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HeadMassage"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_hairWash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/hairWash"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_hairWash"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairWash"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_headMassage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/headMassage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_headMassage"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="headMassage"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/title_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HairTreatment"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CleanUp"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_hairTreatment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/hairTreatment"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_hairTreatment"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairTreatment"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_cleanUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/cleanUp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_cleanup"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="cleanUp"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Facial"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DTan"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_facial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/facial"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_facial"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="facial"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_dTan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/dTan"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_dTan"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="dTan"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/title_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pedicure"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Manicure"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_pedicure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/pedicure"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_pedicure"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="pedicure"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_manicure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/manicure"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_manicure"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="manicure"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="HairSpa"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Other Sevices"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/serv_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_hairSpa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/hairSpa"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_hairSpa"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairSpa"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_others"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/others"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_others"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="others"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Body Polishing"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Manicure Spa"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_bodyPolishing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/bodyPolishing"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_bodyPolishing"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="bodyPolishing"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_manicureSpa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/manicureSpa"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_manicureSpa"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="manicureSpa"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
 
 
 
                 <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="10dp"
                     style="@style/line"/>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_haircolor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/hairColor"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_haircolor"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="hairColor"
-                        android:layout_weight="1"
-                        android:orientation="vertical" />
-
-
-                </FrameLayout>
 
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/unisex_services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:id="@+id/title_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hair Styling"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Threading"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_hairStyling"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/hairStyling"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_hairStyling"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairStyling"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_threading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/threading"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_threading"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="threading"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/title_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Waxing"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Face Mask"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_waxing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/waxing"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_waxing"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="waxing"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_faceMask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/faceMask"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_faceMask"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="faceMask"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nail Art"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Make Up"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_nailArt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/nailArt"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_nailArt"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="nailArt"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_makeUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/makeUp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_makeUp"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="makeUp"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/female_services"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/title_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hair Styling"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Threading"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_hairStyling"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_hairStyling"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_hairStyling"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="hairStyling"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_threading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_threading"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_threading"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="threading"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Waxing"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Face Mask"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_waxing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_waxing"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_waxing"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="waxing"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_faceMask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_faceMask"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_faceMask"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="faceMask"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/title_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nail Art"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Make Up"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/serv_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_nailArt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_nailArt"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_nailArt"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="nailArt"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        style="@style/line"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/text_female_makeUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="No Services Selected"/>
+
+
+
+                        <ProgressBar
+                            android:id="@+id/female_makeUp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/edit_recycler_female_makeUp"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:tag="makeUp"
+                            android:layout_weight="1"
+                            android:orientation="vertical" />
+
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginBottom="10dp"
                 style="@style/line"/>
-
-
-            <LinearLayout
-                android:id="@+id/title_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Shaving"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bleach"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/serv_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_shaving"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/shaving"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_shaving"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="shaving"
-                        android:layout_weight="1"
-                        android:orientation="vertical" />
-
-
-                </FrameLayout>
-
-
-
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    style="@style/line"/>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_bleach"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/bleach"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_bleach"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="bleach"
-                        android:layout_weight="1"
-                        android:orientation="vertical" />
-
-
-                </FrameLayout>
-
-
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="10dp"
-                style="@style/line"/>
-
-
-
-            <LinearLayout
-                android:id="@+id/title_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HairSpa"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Other Sevices"
-                    android:fontFamily="@font/lato_black"
-                    android:gravity="center"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/serv_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_hairspa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/hairSpa"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_hairspa"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="hairSpa"
-                        android:layout_weight="1"
-                        android:orientation="vertical" />
-
-
-                </FrameLayout>
-
-
-
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    style="@style/line"/>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/text_others"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/lato_bold"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        android:text="No Services Selected"/>
-
-                    <ProgressBar
-                        android:id="@+id/others"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:visibility="visible"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/edit_recycler_others"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:tag="others"
-                        android:layout_weight="1"
-                        android:orientation="vertical" />
-
-
-                </FrameLayout>
-
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="10dp"
-                style="@style/line"/>
-
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/btn_extra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add More Services"
-                android:backgroundTint="@color/purple_700"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp"/>
 
 
         </LinearLayout>

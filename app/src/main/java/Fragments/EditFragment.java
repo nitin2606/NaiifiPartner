@@ -4,12 +4,9 @@ package Fragments;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.net.nsd.NsdServiceInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,9 +16,14 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.naiifipartner.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,14 +32,11 @@ import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
-
-
 
 import Adapter.EditDataAdapter;
 
@@ -46,18 +45,30 @@ public class EditFragment extends Fragment {
 
     private FirebaseFirestore db ;
     private FirebaseAuth mAuth;
-
     private EditDataAdapter editDataAdapter ;
-    private RecyclerView edit_recycler_haircut , edit_recycler_haircolor , edit_recycler_shaving , edit_recycler_bleach , edit_recycler_others , edit_recycler_hairspa;
-
+    private RecyclerView edit_recycler_haircut , edit_recycler_hairColor , edit_recycler_shaving , edit_recycler_bleach , edit_recycler_others , edit_recycler_hairSpa,
+                         edit_recycler_hairWash , edit_recycler_hairTreatment, edit_recycler_headMassage , edit_recycler_cleanUp , edit_recycler_facial , edit_recycler_dTan , edit_recycler_pedicure ,
+                         edit_recycler_manicure , edit_recycler_bodyPolishing ,edit_recycler_manicureSpa , edit_recycler_hairStyling , edit_recycler_threading ,
+                         edit_recycler_waxing , edit_recycler_faceMask , edit_recycler_nailArt , edit_recycler_makeUp ,
+                         edit_recycler_female_hairStyling , edit_recycler_female_threading , edit_recycler_female_faceMask , edit_recycler_female_nailArt ,
+                         edit_recycler_female_makeUp ,edit_recycler_female_waxing;
+    
     private MaterialTextView category ,days_closed , time_opening , time_closing , seat_aval ;
-    private ProgressBar haircut , hairColor , shaving , bleach , others , hairSpa ;
 
-    private MaterialTextView text_haircut , text_haircolor  , text_shaving , text_bleach , text_hairspa , text_others ;
+    private ProgressBar haircut , hairColor , shaving , bleach , others , hairSpa , hairWash , headMassage , hairTreatment , cleanUp , facial , dTan , pedicure ,
+                        manicure , bodyPolishing , manicureSpa , hairStyling , threading , waxing , faceMask , nairArt , makeUp , female_hairStyling , female_threading ,
+                        female_waxing , female_faceMask , female_nailArt , female_makeUp ;
+
+    private MaterialTextView text_haircut , text_hairColor  , text_shaving , text_bleach , text_hairSpa , text_others  , text_hairWash , text_headMassage , text_hairTreatment,
+                             text_cleanUp , text_facial , text_dTan , text_pedicure , text_manicure , text_bodyPolishing , text_manicureSpa , text_hairStyling ,
+                             text_threading , text_waxing , text_faceMask , text_nailArt , text_makeUp ,
+                             text_female_hairStyling , text_female_threading , text_female_waxing , text_female_faceMask , text_female_nailArt , text_female_makeUp;
+
+    private LinearLayout common_services , female_services  , unisex_services;
 
 
     String[] items =  {"Unisex Salon (Male and Female Both)", "Male Salon","Female Salon"};
-    String[] days = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","None"};
+    String[] days = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
     String[] seats =  {"1","2","3","4","5","6","7","8","9","10","11"};
 
     private int tHour , tMinute;
@@ -72,11 +83,35 @@ public class EditFragment extends Fragment {
 
 
         edit_recycler_haircut = view.findViewById(R.id.edit_recycler_haircut);
-        edit_recycler_haircolor = view.findViewById(R.id.edit_recycler_haircolor);
+        edit_recycler_hairColor = view.findViewById(R.id.edit_recycler_hairColor);
         edit_recycler_bleach = view.findViewById(R.id.edit_recycler_bleach);
         edit_recycler_shaving = view.findViewById(R.id.edit_recycler_shaving);
-        edit_recycler_hairspa = view.findViewById(R.id.edit_recycler_hairspa);
+        edit_recycler_hairSpa = view.findViewById(R.id.edit_recycler_hairSpa);
         edit_recycler_others = view.findViewById(R.id.edit_recycler_others);
+        edit_recycler_hairWash = view.findViewById(R.id.edit_recycler_hairWash);
+        edit_recycler_headMassage = view.findViewById(R.id.edit_recycler_headMassage);
+        edit_recycler_hairTreatment = view.findViewById(R.id.edit_recycler_hairTreatment);
+        edit_recycler_cleanUp = view.findViewById(R.id.edit_recycler_cleanup);
+        edit_recycler_facial = view.findViewById(R.id.edit_recycler_facial);
+        edit_recycler_dTan = view.findViewById(R.id.edit_recycler_dTan);
+        edit_recycler_pedicure = view.findViewById(R.id.edit_recycler_pedicure);
+        edit_recycler_manicure = view.findViewById(R.id.edit_recycler_manicure);
+        edit_recycler_bodyPolishing = view.findViewById(R.id.edit_recycler_bodyPolishing);
+        edit_recycler_manicureSpa = view.findViewById(R.id.edit_recycler_manicureSpa);
+        edit_recycler_hairStyling = view.findViewById(R.id.edit_recycler_hairStyling);
+        edit_recycler_threading = view.findViewById(R.id.edit_recycler_threading);
+        edit_recycler_waxing = view.findViewById(R.id.edit_recycler_waxing);
+        edit_recycler_faceMask = view.findViewById(R.id.edit_recycler_faceMask);
+        edit_recycler_nailArt = view.findViewById(R.id.edit_recycler_nailArt);
+        edit_recycler_makeUp = view.findViewById(R.id.edit_recycler_makeUp);
+
+        edit_recycler_female_hairStyling = view.findViewById(R.id.edit_recycler_female_hairStyling);
+        edit_recycler_female_threading = view.findViewById(R.id.edit_recycler_female_threading);
+        edit_recycler_female_waxing = view.findViewById(R.id.edit_recycler_female_waxing);
+        edit_recycler_female_faceMask = view.findViewById(R.id.edit_recycler_female_faceMask);
+        edit_recycler_female_nailArt = view.findViewById(R.id.edit_recycler_female_nailArt);
+        edit_recycler_female_makeUp = view.findViewById(R.id.edit_recycler_female_makeUp);
+
 
         haircut = view.findViewById(R.id.haircut);
         hairColor = view.findViewById(R.id.hairColor);
@@ -84,19 +119,73 @@ public class EditFragment extends Fragment {
         bleach = view.findViewById(R.id.bleach);
         hairSpa = view.findViewById(R.id.hairSpa);
         others  = view.findViewById(R.id.others);
+        hairWash = view.findViewById(R.id.hairWash);
+        headMassage = view.findViewById(R.id.headMassage);
+        hairTreatment = view.findViewById(R.id.hairTreatment);
+        cleanUp = view.findViewById(R.id.cleanUp);
+        facial = view.findViewById(R.id.facial);
+        dTan = view.findViewById(R.id.dTan);
+        pedicure = view.findViewById(R.id.pedicure);
+        manicure = view.findViewById(R.id.manicure);
+        bodyPolishing = view.findViewById(R.id.bodyPolishing);
+        manicureSpa = view.findViewById(R.id.manicureSpa);
+        hairStyling = view.findViewById(R.id.hairStyling);
+        threading = view.findViewById(R.id.threading);
+        waxing = view.findViewById(R.id.waxing);
+        faceMask = view.findViewById(R.id.faceMask);
+        nairArt = view.findViewById(R.id.nailArt);
+        makeUp = view.findViewById(R.id.makeUp);
 
-        text_haircolor = view.findViewById(R.id.text_haircolor);
+        female_hairStyling = view.findViewById(R.id.female_hairStyling);
+        female_threading = view.findViewById(R.id.female_threading);
+        female_waxing = view.findViewById(R.id.female_waxing);
+        female_faceMask = view.findViewById(R.id.female_faceMask);
+        female_nailArt = view.findViewById(R.id.female_nailArt);
+        female_makeUp = view.findViewById(R.id.female_makeUp);
+
+
+        text_hairColor = view.findViewById(R.id.text_hairColor);
         text_haircut = view.findViewById(R.id.text_haircut);
         text_bleach = view.findViewById(R.id.text_bleach);
-        text_hairspa = view.findViewById(R.id.text_hairspa);
+        text_hairSpa = view.findViewById(R.id.text_hairSpa);
         text_others = view.findViewById(R.id.text_others);
         text_shaving = view.findViewById(R.id.text_shaving);
+        text_hairWash = view.findViewById(R.id.text_hairWash);
+        text_headMassage = view.findViewById(R.id.text_headMassage);
+        text_hairTreatment = view.findViewById(R.id.text_hairTreatment);
+        text_cleanUp = view.findViewById(R.id.text_cleanUp);
+        text_facial  = view.findViewById(R.id.text_facial);
+        text_dTan = view.findViewById(R.id.text_dTan);
+        text_pedicure = view.findViewById(R.id.text_pedicure);
+        text_manicure = view.findViewById(R.id.text_manicure);
+        text_bodyPolishing = view.findViewById(R.id.text_bodyPolishing);
+        text_manicureSpa = view.findViewById(R.id.text_manicureSpa);
+        text_hairStyling = view.findViewById(R.id.text_hairStyling);
+        text_threading = view.findViewById(R.id.text_threading);
+        text_waxing = view.findViewById(R.id.text_waxing);
+        text_faceMask = view.findViewById(R.id.text_faceMask);
+        text_nailArt = view.findViewById(R.id.text_nailArt);
+        text_makeUp = view.findViewById(R.id.text_makeUp);
+
+        text_female_hairStyling = view.findViewById(R.id.text_female_hairStyling);
+        text_female_threading = view.findViewById(R.id.text_female_threading);
+        text_female_waxing = view.findViewById(R.id.text_female_waxing);
+        text_female_faceMask = view.findViewById(R.id.text_female_faceMask);
+        text_female_nailArt = view.findViewById(R.id.text_female_nailArt);
+        text_female_makeUp = view.findViewById(R.id.text_female_makeUp);
+
+
 
         category = view.findViewById(R.id.category);
         days_closed = view.findViewById(R.id.days_closed);
         time_opening = view.findViewById(R.id.time_opening);
         time_closing = view.findViewById(R.id.time_closing);
         seat_aval = view.findViewById(R.id.seat_aval);
+
+        common_services = view.findViewById(R.id.common_services);
+        unisex_services = view.findViewById(R.id.unisex_services);
+        female_services = view.findViewById(R.id.female_services);
+
 
         btn_refresh = view.findViewById(R.id.btn_refresh);
 
@@ -109,18 +198,17 @@ public class EditFragment extends Fragment {
         });
 
         setBasicData();
+        create_edit_screen();
 
-        service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
-        service_category("hairColor",edit_recycler_haircolor , hairColor , text_haircolor);
-        service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
-        service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
-        service_category("hairSpa" , edit_recycler_hairspa , hairSpa , text_hairspa);
-        service_category("others", edit_recycler_others , others , text_others);
+
+
+
+
 
         category.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                generate_dialog(items,category,"salonCategory");
+                gen_single_dialog(items,category,"salonCategory");
                 return true;
             }
         });
@@ -159,6 +247,88 @@ public class EditFragment extends Fragment {
 
 
         return view;
+
+    }
+
+    private  void create_edit_screen(){
+
+
+        db=FirebaseFirestore.getInstance();
+        mAuth=FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid().toString();
+
+
+        try{
+
+            db.collection(user).document("basicData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()){
+                        String a = task.getResult().get("salonCategory").toString().trim();
+
+
+                        if(a.equals("Unisex Salon (Male and Female Both)")){
+
+                            unisex_services.setVisibility(View.VISIBLE);
+
+                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
+                            service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
+                            service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
+                            service_category("hairSpa" , edit_recycler_hairSpa , hairSpa , text_hairSpa);
+                            service_category("others", edit_recycler_others , others , text_others);
+                            service_category("hairWash" , edit_recycler_hairWash , hairWash ,text_hairWash);
+                            service_category("headMassage",edit_recycler_headMassage,headMassage ,text_headMassage);
+                            service_category("hairTreatment",edit_recycler_hairTreatment,hairTreatment,text_hairTreatment);
+                            service_category("cleanUp",edit_recycler_cleanUp,cleanUp,text_cleanUp);
+                            service_category("facial",edit_recycler_facial,facial,text_facial);
+                            service_category("dTan",edit_recycler_dTan,dTan,text_dTan);
+                            service_category("pedicure",edit_recycler_pedicure,pedicure,text_pedicure);
+                            service_category("manicure",edit_recycler_manicure,manicure,text_manicure);
+                            service_category("bodyPolishing",edit_recycler_bodyPolishing,bodyPolishing,text_bodyPolishing);
+                            service_category("manicureSpa",edit_recycler_manicureSpa,manicureSpa,text_manicureSpa);
+                            service_category("hairStyling",edit_recycler_hairStyling,hairStyling,text_hairStyling);
+                            service_category("threading",edit_recycler_threading,threading,text_threading);
+                            service_category("waxing",edit_recycler_waxing,waxing,text_waxing);
+                            service_category("faceMask",edit_recycler_faceMask,faceMask,text_faceMask);
+                            service_category("nailArt",edit_recycler_nailArt,nairArt,text_nailArt);
+                            service_category("makeUp",edit_recycler_makeUp,makeUp,text_makeUp);
+
+
+                        }
+                        else if(a.equals("Male Salon")){
+
+                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
+                            service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
+                            service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
+                            service_category("hairSpa" , edit_recycler_hairSpa , hairSpa , text_hairSpa);
+                            service_category("others", edit_recycler_others , others , text_others);
+                            service_category("hairWash" , edit_recycler_hairWash , hairWash ,text_hairWash);
+                            service_category("headMassage",edit_recycler_headMassage,headMassage ,text_headMassage);
+                            service_category("hairTreatment",edit_recycler_hairTreatment,hairTreatment,text_hairTreatment);
+                            service_category("cleanUp",edit_recycler_cleanUp,cleanUp,text_cleanUp);
+                            service_category("facial",edit_recycler_facial,facial,text_facial);
+                            service_category("dTan",edit_recycler_dTan,dTan,text_dTan);
+                            service_category("pedicure",edit_recycler_pedicure,pedicure,text_pedicure);
+                            service_category("manicure",edit_recycler_manicure,manicure,text_manicure);
+                            service_category("bodyPolishing",edit_recycler_bodyPolishing,bodyPolishing,text_bodyPolishing);
+                            service_category("manicureSpa",edit_recycler_manicureSpa,manicureSpa,text_manicureSpa);
+
+                        }
+                        else if(a.equals("Female Salon")){
+
+
+
+                        }
+
+                    }
+                }
+            });
+        }catch (Exception e){
+            Log.d("Data Fetch error", "create_edit_screen: "+e.getMessage());
+        }
+
 
     }
 
@@ -233,6 +403,7 @@ public class EditFragment extends Fragment {
         if (arrayList.isEmpty()){
             progressBar.setVisibility(View.GONE);
             materialTextView.setVisibility(View.VISIBLE);
+
         }
         else{
             materialTextView.setVisibility(View.GONE);
@@ -274,6 +445,8 @@ public class EditFragment extends Fragment {
         catch (Exception e){
 
         }
+
+
 
     }
 
@@ -441,10 +614,10 @@ public class EditFragment extends Fragment {
             //this method will be running on UI thread
 
             service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
-            service_category("hairColor",edit_recycler_haircolor , hairColor , text_haircolor);
+            service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
             service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
             service_category("shaving",edit_recycler_shaving , shaving , text_shaving);
-            service_category("hairSpa" , edit_recycler_hairspa , hairSpa , text_hairspa);
+            service_category("hairSpa" , edit_recycler_hairSpa , hairSpa , text_hairSpa);
             service_category("others", edit_recycler_others , others , text_others);
 
 
@@ -452,7 +625,7 @@ public class EditFragment extends Fragment {
 
     }
 
-    public void referenceMethod(){
+    /*public void referenceMethod(){
 
         service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
         service_category("hairColor",edit_recycler_haircolor , hairColor , text_haircolor);
@@ -460,7 +633,14 @@ public class EditFragment extends Fragment {
         service_category("shaving",edit_recycler_shaving , shaving , text_shaving);
         service_category("hairSpa" , edit_recycler_hairspa , hairSpa , text_hairspa);
         service_category("others", edit_recycler_others , others , text_others);
+    }*/
+
+    private void addExtraServices(){
+
+
     }
+
+
 }
 
 
