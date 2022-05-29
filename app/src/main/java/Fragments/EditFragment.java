@@ -56,7 +56,7 @@ public class EditFragment extends Fragment {
     private MaterialTextView category ,days_closed , time_opening , time_closing , seat_aval ;
 
     private ProgressBar haircut , hairColor , shaving , bleach , others , hairSpa , hairWash , headMassage , hairTreatment , cleanUp , facial , dTan , pedicure ,
-                        manicure , bodyPolishing , manicureSpa , hairStyling , threading , waxing , faceMask , nairArt , makeUp , female_hairStyling , female_threading ,
+                        manicure , bodyPolishing , manicureSpa , hairStyling , threading , waxing , faceMask , nailArt , makeUp , female_hairStyling , female_threading ,
                         female_waxing , female_faceMask , female_nailArt , female_makeUp ;
 
     private MaterialTextView text_haircut , text_hairColor  , text_shaving , text_bleach , text_hairSpa , text_others  , text_hairWash , text_headMassage , text_hairTreatment,
@@ -133,7 +133,7 @@ public class EditFragment extends Fragment {
         threading = view.findViewById(R.id.threading);
         waxing = view.findViewById(R.id.waxing);
         faceMask = view.findViewById(R.id.faceMask);
-        nairArt = view.findViewById(R.id.nailArt);
+        nailArt = view.findViewById(R.id.nailArt);
         makeUp = view.findViewById(R.id.makeUp);
 
         female_hairStyling = view.findViewById(R.id.female_hairStyling);
@@ -205,13 +205,13 @@ public class EditFragment extends Fragment {
 
 
 
-        category.setOnLongClickListener(new View.OnLongClickListener() {
+        /*category.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 gen_single_dialog(items,category,"salonCategory");
                 return true;
             }
-        });
+        });*/
 
         days_closed.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -291,7 +291,7 @@ public class EditFragment extends Fragment {
                             service_category("threading",edit_recycler_threading,threading,text_threading);
                             service_category("waxing",edit_recycler_waxing,waxing,text_waxing);
                             service_category("faceMask",edit_recycler_faceMask,faceMask,text_faceMask);
-                            service_category("nailArt",edit_recycler_nailArt,nairArt,text_nailArt);
+                            service_category("nailArt",edit_recycler_nailArt,nailArt,text_nailArt);
                             service_category("makeUp",edit_recycler_makeUp,makeUp,text_makeUp);
 
 
@@ -317,6 +317,36 @@ public class EditFragment extends Fragment {
 
                         }
                         else if(a.equals("Female Salon")){
+
+
+                            female_services.setVisibility(View.VISIBLE);
+
+
+                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
+                            service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
+                            service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
+                            service_category("hairSpa" , edit_recycler_hairSpa , hairSpa , text_hairSpa);
+                            service_category("others", edit_recycler_others , others , text_others);
+                            service_category("hairWash" , edit_recycler_hairWash , hairWash ,text_hairWash);
+                            service_category("headMassage",edit_recycler_headMassage,headMassage ,text_headMassage);
+                            service_category("hairTreatment",edit_recycler_hairTreatment,hairTreatment,text_hairTreatment);
+                            service_category("cleanUp",edit_recycler_cleanUp,cleanUp,text_cleanUp);
+                            service_category("facial",edit_recycler_facial,facial,text_facial);
+                            service_category("dTan",edit_recycler_dTan,dTan,text_dTan);
+                            service_category("pedicure",edit_recycler_pedicure,pedicure,text_pedicure);
+                            service_category("manicure",edit_recycler_manicure,manicure,text_manicure);
+                            service_category("bodyPolishing",edit_recycler_bodyPolishing,bodyPolishing,text_bodyPolishing);
+                            service_category("manicureSpa",edit_recycler_manicureSpa,manicureSpa,text_manicureSpa);
+
+                            service_category("hairStyling",edit_recycler_female_hairStyling,female_hairStyling,text_female_hairStyling);
+                            service_category("threading",edit_recycler_female_threading,female_threading,text_female_threading);
+                            service_category("waxing",edit_recycler_female_waxing,female_waxing,text_female_waxing);
+                            service_category("faceMask",edit_recycler_female_faceMask,female_faceMask,text_female_faceMask);
+                            service_category("nailArt",edit_recycler_female_nailArt,female_nailArt,text_female_nailArt);
+                            service_category("makeUp",edit_recycler_female_makeUp,female_makeUp,text_female_makeUp);
+
+
 
 
 
