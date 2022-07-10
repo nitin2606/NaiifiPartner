@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 import Fragments.EditFragment;
 
 
@@ -93,6 +92,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
             service_price = itemView.findViewById(R.id.service_price);
             service_time = itemView.findViewById(R.id.service_time);
 
+
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -144,9 +144,9 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
             Log.d("err:", "servicePrice: "+e.getMessage());
         }
 
-
-
     }
+
+
 
    private void updateServiceData(MaterialTextView materialTextView,String service , String price , String t , int pos){
 
@@ -363,6 +363,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
 
     }
+
 
 
 

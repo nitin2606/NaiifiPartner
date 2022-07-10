@@ -1,17 +1,13 @@
 package Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.example.naiifipartner.R;
 import com.squareup.picasso.Picasso;
@@ -43,6 +39,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
 
         Picasso.get().load(String.valueOf(map.get("url"+String.valueOf(position)))).fit().into((holder.zoom_imageView));
+        holder.zoom_imageView.setTag("url"+String.valueOf(position));
     }
 
     @Override

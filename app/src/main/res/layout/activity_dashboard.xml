@@ -14,10 +14,7 @@
     <FrameLayout
         android:id="@+id/custom_toast_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-
+        android:layout_height="wrap_content" />
 
 
 
@@ -47,6 +44,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/purple_700"
         app:menu="@menu/my_navigation_items"
         android:visibility="visible"/>
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/add_dialog_textview"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:padding="1dp"
+
+        android:drawableEnd="@drawable/ic_drop_down"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/dynamic_add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:clickable="true"
+        android:orientation="vertical"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/add_btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/add_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="5dp"
+            android:text="Cancel"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -6,7 +6,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -36,12 +39,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
+
+import Fragments.AddFragment;
 import Fragments.EditFragment;
 import Fragments.HelpFragment;
 import Fragments.HomeFragment;
 import Fragments.ImageFragment;
 import Fragments.InsightsFragment;
 import Fragments.SettingsFragment;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 
 public class DashboardActivity extends AppCompatActivity {
@@ -54,7 +62,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private Dialog dialog;
     private Switch status_switch;
-    private TextView status_text;
+    private TextView status_text , test_text;
 
 
 
@@ -88,6 +96,9 @@ public class DashboardActivity extends AppCompatActivity {
 
         status_switch = header.findViewById(R.id.status_switch);
         status_text = header.findViewById(R.id.status_text);
+
+
+
 
 
 
@@ -144,6 +155,15 @@ public class DashboardActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
 
                         break;
+
+
+                    case R.id.nav_add:
+
+                        navFragment = new AddFragment();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+
+                        break;
+
 
                     case R.id.salon_images:
                         navFragment = new ImageFragment();
@@ -303,6 +323,8 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
 
         }
+
+
 
 
     }
@@ -489,6 +511,39 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void data_loading(String category){
+
+        SharedPreferences sh = getSharedPreferences("NaiifiData",MODE_PRIVATE);
+        db=FirebaseFirestore.getInstance();
+        mAuth=FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid().toString();
+
+        HashMap<String , Object> hashMap = new HashMap<>();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                db.collection(user).document("basicData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+
+                            String data  = task.getResult().toString();
+
+                        }
+                    }
+                });
+
+            }
+        });
+        thread.start();
+
+
+    }
+
+
 
 
 

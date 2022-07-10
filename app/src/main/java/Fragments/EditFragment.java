@@ -3,18 +3,23 @@ package Fragments;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.net.nsd.NsdServiceInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -29,16 +34,25 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.api.Distribution;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
-
 import Adapter.EditDataAdapter;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class EditFragment extends Fragment {
@@ -64,16 +78,35 @@ public class EditFragment extends Fragment {
                              text_threading , text_waxing , text_faceMask , text_nailArt , text_makeUp ,
                              text_female_hairStyling , text_female_threading , text_female_waxing , text_female_faceMask , text_female_nailArt , text_female_makeUp;
 
-    private LinearLayout common_services , female_services  , unisex_services;
+
+    private MaterialTextView add_haircut , add_hairColor  , add_shaving , add_bleach , add_hairSpa , add_others  , add_hairWash , add_headMassage , add_hairTreatment,
+            add_cleanUp , add_facial , add_dTan , add_pedicure , add_manicure , add_bodyPolishing , add_manicureSpa ,
+
+            add_unisex_hairStyling , add_unisex_threading , add_unisex_waxing , add_unisex_faceMask , add_unisex_nailArt , add_unisex_makeUp ,
+
+            add_female_hairStyling , add_female_threading , add_female_waxing , add_female_faceMask , add_female_nailArt , add_female_makeUp;
+
+
+    private LinearLayout common_services , female_services  , unisex_services , extra_data_layout ;
 
 
     String[] items =  {"Unisex Salon (Male and Female Both)", "Male Salon","Female Salon"};
     String[] days = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
     String[] seats =  {"1","2","3","4","5","6","7","8","9","10","11"};
 
+
+
     private int tHour , tMinute;
 
     private ImageView btn_refresh;
+
+    private ArrayList<String> extraList ;
+
+
+
+
+
+
 
 
     @Override
@@ -176,6 +209,40 @@ public class EditFragment extends Fragment {
 
 
 
+        add_haircut = view.findViewById(R.id.add_haircut);
+        add_hairColor= view.findViewById(R.id.add_hairColor);
+        add_shaving = view.findViewById(R.id.add_shaving);
+        add_bleach = view.findViewById(R.id.add_bleach);
+        add_hairSpa = view.findViewById(R.id.add_hairSpa);
+        add_others = view.findViewById(R.id.add_others);
+        add_hairWash = view.findViewById(R.id.add_hairWash);
+        add_headMassage = view.findViewById(R.id.add_headMassage);
+        add_hairTreatment= view.findViewById(R.id.add_hairTreatment);
+        add_cleanUp = view.findViewById(R.id.add_cleanUp);
+        add_facial = view.findViewById(R.id.add_facial);
+        add_dTan = view.findViewById(R.id.add_dtan);
+        add_pedicure = view.findViewById(R.id.add_pedicure);
+        add_manicure = view.findViewById(R.id.add_manicure);
+        add_bodyPolishing = view.findViewById(R.id.add_bodyPolishing);
+        add_manicureSpa = view.findViewById(R.id.add_manicureSpa);
+
+        add_unisex_hairStyling = view.findViewById(R.id.add_unisex_hairStyling);
+        add_unisex_threading= view.findViewById(R.id.add_unisex_threading);
+        add_unisex_waxing = view.findViewById(R.id.add_unisex_waxing);
+        add_unisex_faceMask= view.findViewById(R.id.add_unisex_faceMask);
+        add_unisex_nailArt = view.findViewById(R.id.add_unisex_nailArt);
+        add_unisex_makeUp = view.findViewById(R.id.add_unisex_makeUp);
+
+
+        add_female_hairStyling  = view.findViewById(R.id.add_female_hairStyling);
+        add_female_threading = view.findViewById(R.id.add_female_threading);
+        add_female_waxing = view.findViewById(R.id.add_female_waxing);
+        add_female_faceMask = view.findViewById(R.id.add_female_faceMask);
+        add_female_nailArt = view.findViewById(R.id.add_female_nailArt);
+        add_female_makeUp= view.findViewById(R.id.add_female_makeUp);
+
+
+
         category = view.findViewById(R.id.category);
         days_closed = view.findViewById(R.id.days_closed);
         time_opening = view.findViewById(R.id.time_opening);
@@ -185,6 +252,12 @@ public class EditFragment extends Fragment {
         common_services = view.findViewById(R.id.common_services);
         unisex_services = view.findViewById(R.id.unisex_services);
         female_services = view.findViewById(R.id.female_services);
+
+        extra_data_layout = view.findViewById(R.id.extra_data_layout);
+
+
+
+
 
 
         btn_refresh = view.findViewById(R.id.btn_refresh);
@@ -204,14 +277,15 @@ public class EditFragment extends Fragment {
 
 
 
-
-        /*category.setOnLongClickListener(new View.OnLongClickListener() {
+        add_bleach.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                gen_single_dialog(items,category,"salonCategory");
-                return true;
+            public void onClick(View v) {
+                fetch_extraData("unisexBleach" , add_bleach.getTag().toString().trim() , add_bleach.getTag().toString().trim());
+
             }
-        });*/
+        });
+
+
 
         days_closed.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -655,20 +729,343 @@ public class EditFragment extends Fragment {
 
     }
 
-    /*public void referenceMethod(){
 
-        service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
-        service_category("hairColor",edit_recycler_haircolor , hairColor , text_haircolor);
-        service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
-        service_category("shaving",edit_recycler_shaving , shaving , text_shaving);
-        service_category("hairSpa" , edit_recycler_hairspa , hairSpa , text_hairspa);
-        service_category("others", edit_recycler_others , others , text_others);
-    }*/
+    private void generate_dialog(String[] arr , MaterialTextView txt , LinearLayout linearLayout , AlertDialog dialog){
 
-    private void addExtraServices(){
+        boolean[] selected1 ;
+        selected1=new boolean[arr.length];
+        ArrayList<Integer> titlelst1 = new ArrayList<>();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Select options whichever applicable :");
+        builder.setCancelable(false);
+
+        builder.setMultiChoiceItems(arr, selected1, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                if(b){
+                    titlelst1.add(i);
+                    Collections.sort(titlelst1);
+                }
+                else{
+                    titlelst1.remove(Integer.valueOf(i));
+                }
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                ArrayList<String> tempList = new ArrayList<>();
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int j = 0; j < titlelst1.size(); j++) {
+                    stringBuilder.append(arr[titlelst1.get(j)]);
+                    tempList.add(arr[titlelst1.get(j)]);
+
+                    if (j != titlelst1.size() - 1) {
+
+                        stringBuilder.append(", ");
+                    }
+                }
+                txt.setText(stringBuilder.toString());
+
+                linearLayout.removeAllViews();
+
+                generate_dynamic_edittext(tempList , linearLayout , dialog);
+
+
+
+            }
+
+        });
+        builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // use for loop
+                for (int j = 0; j < selected1.length; j++) {
+                    // remove all selection
+                    selected1[j] = false;
+                    // clear language list
+                    titlelst1.clear();
+                    // clear text view value
+                    txt.setText("");
+                }
+            }
+        });
+        builder.show();
+
+    }
+
+
+    private void fetch_extraData(String specific_category , String category , String tag) {
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid().toString();
+
+       extraList = new ArrayList<>();
+
+
+        db.collection("Services").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+
+                        extraList.add(documentSnapshot.getData().get(specific_category).toString());
+
+                    }
+                }
+            }
+        });
+
+
+        db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    extraList.add(task.getResult().get(category).toString());
+                    recieveData2(extraList , tag);
+
+                }
+            }
+        });
 
 
     }
+
+    private  void recieveData(ArrayList<String> arrayList , String tag){
+
+
+        Observable<ArrayList<String>> observable = Observable.just(arrayList);
+
+        Observer<ArrayList<String>> observer = new Observer<ArrayList<String>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(ArrayList<String> arrayList) {
+
+
+                try {
+
+                    String[] completeArray = arrayList.get(0).split(",");
+                    String[] selectedArray = arrayList.get(1).split(";");
+
+                    if(selectedArray.length>0){
+
+                        ArrayList<String> leftData = new ArrayList<>();
+
+
+                        for(int i=0 ; i<completeArray.length ; i++){
+                            int c=0;
+
+                            for(int j=0 ; j<selectedArray.length ; j++){
+
+                                if(completeArray[i].equals(selectedArray[j])){
+                                    c=c+1;
+                                }
+                            }
+                            if (c==0){
+                                leftData.add(completeArray[i]);
+
+                            }
+
+                        }
+
+                        String[] leftArray = new String[leftData.size()];
+
+                        for(int i = 0 ; i<leftData.size() ; i++){
+                            leftArray[i]=leftData.get(i);
+
+                        }
+                        generateAddExtraDialog(leftArray);
+
+
+                    }
+                    else{
+
+                        generateAddExtraDialog(completeArray);
+
+                        //generateAddExtraDialog(completeArray);
+                    }
+
+
+
+                }catch (Exception e){
+                    Log.d("Background Error : ", "onNext: "+e.getMessage());
+                }
+
+
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("Some Error Occurred !");
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("Process Completed :");
+
+            }
+        };
+
+
+
+        observable.subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+
+        
+    }
+
+    private void  recieveData2(ArrayList<String> arrayList , String tag){
+
+        try {
+
+            String[] completeArray = arrayList.get(0).split(",");
+            String[] selectedArray = arrayList.get(1).split(";");
+
+            if(selectedArray.length>0){
+
+                ArrayList<String> leftData = new ArrayList<>();
+
+
+                for(int i=0 ; i<completeArray.length ; i++){
+                    int c=0;
+
+                    for(int j=0 ; j<selectedArray.length ; j++){
+
+                        if(completeArray[i].equals(selectedArray[j])){
+                            c=c+1;
+                        }
+                    }
+                    if (c==0){
+                        leftData.add(completeArray[i]);
+
+                    }
+
+                }
+
+                String[] leftArray = new String[leftData.size()];
+
+                for(int i = 0 ; i<leftData.size() ; i++){
+                    leftArray[i]=leftData.get(i);
+
+                }
+                generateAddExtraDialog(leftArray);
+
+
+            }
+            else{
+
+                generateAddExtraDialog(completeArray);
+
+                //generateAddExtraDialog(completeArray);
+            }
+
+
+
+        }catch (Exception e){
+            Log.d("Background Error : ", "onNext: "+e.getMessage());
+        }
+
+
+
+
+    }
+
+    private void generateAddExtraDialog(String[] data){
+
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+
+
+        LayoutInflater inflater1 = LayoutInflater.from(getContext());
+        View dialogView1 = inflater1.inflate(R.layout.custom_extra_dialog, null);
+        builder1.setView(dialogView1);
+
+        MaterialTextView add_dialog_textview = dialogView1.findViewById(R.id.add_dialog_textview);
+        Button ok = dialogView1.findViewById(R.id.add_btn_ok);
+        Button cancel = dialogView1.findViewById(R.id.add_btn_cancel);
+        LinearLayout dynamic_add_layout = dialogView1.findViewById(R.id.dynamic_add_layout);
+
+
+        AlertDialog dialog1 = builder1.create();
+        //dialog1.getWindow().setBackgroundDrawable(R.drawable.custom_dialog_background);
+        dialog1.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        add_dialog_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                generate_dialog(data ,add_dialog_textview,dynamic_add_layout , dialog1);
+
+
+            }
+        });
+
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog1.dismiss();
+
+            }
+        });
+
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        dialog1.show();
+
+
+    }
+
+    private void generate_dynamic_edittext(ArrayList<String>  arrayList, LinearLayout linearLayout , AlertDialog dialog){
+
+        EditText editText ;
+
+        for(int k=0 ; k< arrayList.size() ;k++){
+
+                    editText = new EditText(getLayoutInflater().getContext());
+                    editText.setId(k);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_rupees,0,0,0);
+                    editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    editText.setTag(arrayList.get(k));
+                    editText.setHint(arrayList.get(k));
+                    editText.setHint(arrayList.get(k));
+                    linearLayout.addView(editText);
+                    
+        }
+
+    }
+
+
+    private HashMap<String, String> retrieve_dynamic_editText_data(LinearLayout linearLayout){
+
+
+        HashMap<String , String> map =  new HashMap<>();
+        map.clear();
+
+        for(int i =0 ; i<linearLayout.getChildCount() ; i++){
+
+            String tag = linearLayout.getChildAt(i).getTag().toString();
+            String price = ((EditText) linearLayout.getChildAt(i)).getText().toString();
+
+            map.put(tag.trim() , price.trim());
+        }
+        return map ;
+    }
+
+
 
 
 }

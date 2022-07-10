@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_refresh"
             android:clickable="true"
+            android:focusable="true"
             android:layout_marginTop="25dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="end"/>
@@ -50,22 +51,22 @@
 
     </LinearLayout>
 
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-       android:fadeScrollbars="false"
+        android:fadeScrollbars="false"
 
         android:scrollbarStyle="outsideOverlay">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:orientation="vertical">
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/category"
@@ -180,20 +181,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_haircut"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="HairCut"
+                        android:tag="haircut"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
-
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_hairColor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+
                         android:text="HairColor"
+                        android:tag="hairColor"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -307,20 +312,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_shaving"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Shaving"
+                        android:tag="shaving"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_bleach"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Bleach"
+                        android:text="bleach"
+                        android:tag="bleach"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -428,20 +437,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_hairWash"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="HairWash"
+                        android:tag="hairWash"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_headMassage"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="HeadMassage"
+                        android:tag="headMassage"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -552,20 +565,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_hairTreatment"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="HairTreatment"
+                        android:tag="hairTreatment"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_cleanUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="CleanUp"
+                        android:tag="cleanUp"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -675,20 +692,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_facial"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Facial"
+                        android:tag="facial"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_dtan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="DTan"
+                        android:tag="dTan"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -797,20 +818,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_pedicure"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Pedicure"
+                        android:tag="pedicure"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_manicure"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Manicure"
+                        android:tag="manicure"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -917,20 +942,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_hairSpa"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="HairSpa"
+                        android:tag="hairSpa"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_others"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Other Sevices"
+                        android:tag="others"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1037,21 +1066,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_bodyPolishing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Body Polishing"
+                        android:tag="bodyPolishing"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/title_manicureSpa"
+                        android:id="@+id/add_manicureSpa"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Manicure Spa"
+                        android:tag="manicureSpa"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1184,20 +1216,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_hairStyling"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Hair Styling"
+                        android:tag="hairStyling"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_threading"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Threading"
+                        android:tag="threading"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1303,20 +1339,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_waxing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Waxing"
+                        android:tag="waxing"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_faceMask"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Face Mask"
+                        android:tag="faceMask"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1424,20 +1464,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_nailArt"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nail Art"
+                        android:tag="nailArt"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_unisex_makeUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Make Up"
+                        android:tag="makeUp"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1541,7 +1585,7 @@
 
 
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/female_services"
                 android:layout_width="match_parent"
@@ -1558,20 +1602,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_hairStyling"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Hair Styling"
+                        android:tag="hairStyling"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_threading"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Threading"
+                        android:tag="threading"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1679,20 +1727,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_waxing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Waxing"
+                        android:tag="waxing"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_faceMask"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Face Mask"
+                        android:tag="faceMask"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1800,20 +1852,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_nailArt"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nail Art"
+                        android:tag="nailArt"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/add_female_makeUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Make Up"
+                        android:tag="makeUp"
                         android:fontFamily="@font/lato_black"
                         android:gravity="center"/>
 
@@ -1916,11 +1972,6 @@
             </LinearLayout>
 
 
-
-
-
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -1932,8 +1983,13 @@
 
 
 
-
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/extra_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
 
 </LinearLayout>

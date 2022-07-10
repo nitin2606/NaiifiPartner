@@ -11,13 +11,18 @@
         <item
             android:id="@+id/nav_edit"
             android:icon="@drawable/ic_edit"
-            android:title="Edit salon info"
+            android:title="Edit Salon Info"
             android:iconTintMode="add"/>
+
+        <item
+            android:id="@+id/nav_add"
+            android:icon="@drawable/ic_add_circle"
+            android:title="Add More Services"/>
 
         <item
             android:id="@+id/current_seat"
             android:icon="@drawable/ic_seat_item"
-            android:title="Current avalilable seats"/>
+            android:title="Current Avalilable Seats"/>
 
         <item
             android:id="@+id/salon_images"
