@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +42,15 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
         Picasso.get().load(String.valueOf(map.get("url"+String.valueOf(position)))).fit().into((holder.zoom_imageView));
         holder.zoom_imageView.setTag("url"+String.valueOf(position));
+
+        holder.zoom_imageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                holder.image_progressBar.setVisibility(View.GONE);
+                holder.zoom_imageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+            }
+        });
     }
 
     @Override
@@ -50,12 +61,24 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView zoom_imageView ;
+        private ProgressBar image_progressBar ;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             zoom_imageView = itemView.findViewById(R.id.zoom_imageView);
+            image_progressBar = itemView.findViewById(R.id.image_progressBar);
+
+            /*zoom_imageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+
+                    image_progressBar.setVisibility(View.GONE);
+                    zoom_imageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                }
+            });*/
 
 
         }

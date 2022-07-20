@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
             android:id="@+id/zoom_imageView"
             android:layout_width="match_parent"
@@ -22,6 +21,12 @@
             android:layout_margin="10dp"
             android:background="@drawable/custom_imageview_background"
             android:padding="2dp" />
+
+        <ProgressBar
+            android:id="@+id/image_progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"/>
 
 
 

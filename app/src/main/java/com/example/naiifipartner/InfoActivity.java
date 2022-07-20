@@ -429,11 +429,11 @@ public class InfoActivity extends AppCompatActivity {
                     data_grid(grid_view_hair_styling , "unisexHairStyling");
                     data_grid(grid_view_threading , "unisexThreading");
                     data_grid(grid_view_waxing , "unisexWaxing");
-                    data_grid(grid_view_facemask , "unisexFacemask");
+                    data_grid(grid_view_facemask , "unisexFaceMask");
                     data_grid(grid_view_nailart , "unisexNailArt");
                     data_grid(grid_view_makeup , "unisexMakeUp");
 
-                    data_grid(grid_view_other , "otherUnisex");
+                    data_grid(grid_view_other , "unisexOthers");
 
                     linear_grid_data.setVisibility(View.VISIBLE);
 
@@ -467,7 +467,7 @@ public class InfoActivity extends AppCompatActivity {
                 }
                 else if(editable.toString().equals("Male Salon")){
 
-                    data_grid(grid_view_hairCut , "maleHaircut");
+                    data_grid(grid_view_hairCut , "maleHairCut");
                     data_grid(grid_view_shaving , "maleShaving");
                     data_grid(grid_view_hairSpa , "maleHairSpa");
                     data_grid(grid_view_hairColor , "maleHairColor");
@@ -483,7 +483,7 @@ public class InfoActivity extends AppCompatActivity {
                     data_grid(grid_view_manicure , "maleManicure");
                     data_grid(grid_view_body_polishing , "maleBodyPolishing");
                     data_grid(grid_view_manicurespa , "maleManicureSpa");
-                    data_grid(grid_view_other , "otherMale");
+                    data_grid(grid_view_other , "maleOthers");
 
                     linear_grid_data.setVisibility(View.VISIBLE);
                     category_shaving.setVisibility(View.VISIBLE);
@@ -512,7 +512,7 @@ public class InfoActivity extends AppCompatActivity {
 
                 else if(editable.toString().equals("Female Salon")){
 
-                    data_grid(grid_view_hairCut , "femaleHaircut");
+                    data_grid(grid_view_hairCut , "femaleHairCut");
                     data_grid(grid_view_hairSpa , "femaleHairSpa");
                     data_grid(grid_view_hairColor , "femaleHairColor");
                     data_grid(grid_view_bleach , "femaleBleach");
@@ -533,7 +533,7 @@ public class InfoActivity extends AppCompatActivity {
                     data_grid(grid_view_nailart , "femaleNailArt");
                     data_grid(grid_view_makeup , "femaleMakeUp");
 
-                    data_grid(grid_view_other , "otherFemale");
+                    data_grid(grid_view_other , "femaleOthers");
 
                     linear_grid_data.setVisibility(View.VISIBLE);
 
@@ -798,40 +798,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     @SuppressLint("NewApi")
-    /*private void testing(){
 
-
-
-        mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
-
-        mRootRef = FirebaseDatabase.getInstance().getReference(user);
-
-        for(Map.Entry<String , Object> entry : grid_data_map.entrySet()){
-            String key = entry.getKey();
-            String value = entry.getValue().toString().trim();
-            String data = value;
-            grid_data_map.replace(key , data);
-        }
-
-        db.collection(user).document("serviceData").set(grid_data_map).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                System.out.println("Service data uploaded successfully");
-            }
-        });
-
-
-        db.collection(user).document("priceData").set(retrieve_edt_data(linear_dynamic)).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                System.out.println("All prices uploaded successfully");
-
-            }
-        });
-
-
-    }*/
 
     private void uploadBasicData(){
 

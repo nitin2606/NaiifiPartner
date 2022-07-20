@@ -256,9 +256,7 @@ public class EditFragment extends Fragment {
         extra_data_layout = view.findViewById(R.id.extra_data_layout);
 
 
-
-
-
+        
 
         btn_refresh = view.findViewById(R.id.btn_refresh);
 
@@ -272,18 +270,6 @@ public class EditFragment extends Fragment {
 
         setBasicData();
         create_edit_screen();
-
-
-
-
-
-        add_bleach.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fetch_extraData("unisexBleach" , add_bleach.getTag().toString().trim() , add_bleach.getTag().toString().trim());
-
-            }
-        });
 
 
 
@@ -345,7 +331,7 @@ public class EditFragment extends Fragment {
 
                             unisex_services.setVisibility(View.VISIBLE);
 
-                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairCut",edit_recycler_haircut , haircut , text_haircut);
                             service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
                             service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
                             service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
@@ -372,7 +358,7 @@ public class EditFragment extends Fragment {
                         }
                         else if(a.equals("Male Salon")){
 
-                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairCut",edit_recycler_haircut , haircut , text_haircut);
                             service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
                             service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
                             service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
@@ -396,7 +382,7 @@ public class EditFragment extends Fragment {
                             female_services.setVisibility(View.VISIBLE);
 
 
-                            service_category("haircut",edit_recycler_haircut , haircut , text_haircut);
+                            service_category("hairCut",edit_recycler_haircut , haircut , text_haircut);
                             service_category("hairColor",edit_recycler_hairColor , hairColor , text_hairColor);
                             service_category("bleach" , edit_recycler_bleach , bleach , text_bleach);
                             service_category("shaving",edit_recycler_shaving , shaving, text_shaving);
@@ -730,304 +716,9 @@ public class EditFragment extends Fragment {
     }
 
 
-    private void generate_dialog(String[] arr , MaterialTextView txt , LinearLayout linearLayout , AlertDialog dialog){
 
-        boolean[] selected1 ;
-        selected1=new boolean[arr.length];
-        ArrayList<Integer> titlelst1 = new ArrayList<>();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Select options whichever applicable :");
-        builder.setCancelable(false);
 
-        builder.setMultiChoiceItems(arr, selected1, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                if(b){
-                    titlelst1.add(i);
-                    Collections.sort(titlelst1);
-                }
-                else{
-                    titlelst1.remove(Integer.valueOf(i));
-                }
-            }
-        });
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                ArrayList<String> tempList = new ArrayList<>();
-                StringBuilder stringBuilder = new StringBuilder();
-                for (int j = 0; j < titlelst1.size(); j++) {
-                    stringBuilder.append(arr[titlelst1.get(j)]);
-                    tempList.add(arr[titlelst1.get(j)]);
-
-                    if (j != titlelst1.size() - 1) {
-
-                        stringBuilder.append(", ");
-                    }
-                }
-                txt.setText(stringBuilder.toString());
-
-                linearLayout.removeAllViews();
-
-                generate_dynamic_edittext(tempList , linearLayout , dialog);
-
-
-
-            }
-
-        });
-        builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // use for loop
-                for (int j = 0; j < selected1.length; j++) {
-                    // remove all selection
-                    selected1[j] = false;
-                    // clear language list
-                    titlelst1.clear();
-                    // clear text view value
-                    txt.setText("");
-                }
-            }
-        });
-        builder.show();
-
-    }
-
-
-    private void fetch_extraData(String specific_category , String category , String tag) {
-
-        db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
-
-       extraList = new ArrayList<>();
-
-
-        db.collection("Services").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-
-                        extraList.add(documentSnapshot.getData().get(specific_category).toString());
-
-                    }
-                }
-            }
-        });
-
-
-        db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    extraList.add(task.getResult().get(category).toString());
-                    recieveData2(extraList , tag);
-
-                }
-            }
-        });
-
-
-    }
-
-    private  void recieveData(ArrayList<String> arrayList , String tag){
-
-
-        Observable<ArrayList<String>> observable = Observable.just(arrayList);
-
-        Observer<ArrayList<String>> observer = new Observer<ArrayList<String>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(ArrayList<String> arrayList) {
-
-
-                try {
-
-                    String[] completeArray = arrayList.get(0).split(",");
-                    String[] selectedArray = arrayList.get(1).split(";");
-
-                    if(selectedArray.length>0){
-
-                        ArrayList<String> leftData = new ArrayList<>();
-
-
-                        for(int i=0 ; i<completeArray.length ; i++){
-                            int c=0;
-
-                            for(int j=0 ; j<selectedArray.length ; j++){
-
-                                if(completeArray[i].equals(selectedArray[j])){
-                                    c=c+1;
-                                }
-                            }
-                            if (c==0){
-                                leftData.add(completeArray[i]);
-
-                            }
-
-                        }
-
-                        String[] leftArray = new String[leftData.size()];
-
-                        for(int i = 0 ; i<leftData.size() ; i++){
-                            leftArray[i]=leftData.get(i);
-
-                        }
-                        generateAddExtraDialog(leftArray);
-
-
-                    }
-                    else{
-
-                        generateAddExtraDialog(completeArray);
-
-                        //generateAddExtraDialog(completeArray);
-                    }
-
-
-
-                }catch (Exception e){
-                    Log.d("Background Error : ", "onNext: "+e.getMessage());
-                }
-
-
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                System.out.println("Some Error Occurred !");
-            }
-
-            @Override
-            public void onComplete() {
-                System.out.println("Process Completed :");
-
-            }
-        };
-
-
-
-        observable.subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
-
-        
-    }
-
-    private void  recieveData2(ArrayList<String> arrayList , String tag){
-
-        try {
-
-            String[] completeArray = arrayList.get(0).split(",");
-            String[] selectedArray = arrayList.get(1).split(";");
-
-            if(selectedArray.length>0){
-
-                ArrayList<String> leftData = new ArrayList<>();
-
-
-                for(int i=0 ; i<completeArray.length ; i++){
-                    int c=0;
-
-                    for(int j=0 ; j<selectedArray.length ; j++){
-
-                        if(completeArray[i].equals(selectedArray[j])){
-                            c=c+1;
-                        }
-                    }
-                    if (c==0){
-                        leftData.add(completeArray[i]);
-
-                    }
-
-                }
-
-                String[] leftArray = new String[leftData.size()];
-
-                for(int i = 0 ; i<leftData.size() ; i++){
-                    leftArray[i]=leftData.get(i);
-
-                }
-                generateAddExtraDialog(leftArray);
-
-
-            }
-            else{
-
-                generateAddExtraDialog(completeArray);
-
-                //generateAddExtraDialog(completeArray);
-            }
-
-
-
-        }catch (Exception e){
-            Log.d("Background Error : ", "onNext: "+e.getMessage());
-        }
-
-
-
-
-    }
-
-    private void generateAddExtraDialog(String[] data){
-
-
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
-
-
-        LayoutInflater inflater1 = LayoutInflater.from(getContext());
-        View dialogView1 = inflater1.inflate(R.layout.custom_extra_dialog, null);
-        builder1.setView(dialogView1);
-
-        MaterialTextView add_dialog_textview = dialogView1.findViewById(R.id.add_dialog_textview);
-        Button ok = dialogView1.findViewById(R.id.add_btn_ok);
-        Button cancel = dialogView1.findViewById(R.id.add_btn_cancel);
-        LinearLayout dynamic_add_layout = dialogView1.findViewById(R.id.dynamic_add_layout);
-
-
-        AlertDialog dialog1 = builder1.create();
-        //dialog1.getWindow().setBackgroundDrawable(R.drawable.custom_dialog_background);
-        dialog1.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
-        add_dialog_textview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                generate_dialog(data ,add_dialog_textview,dynamic_add_layout , dialog1);
-
-
-            }
-        });
-
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog1.dismiss();
-
-            }
-        });
-
-
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        dialog1.show();
-
-
-    }
 
     private void generate_dynamic_edittext(ArrayList<String>  arrayList, LinearLayout linearLayout , AlertDialog dialog){
 

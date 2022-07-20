@@ -4,6 +4,7 @@ package com.example.naiifipartner;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.io.File;
 import java.util.HashMap;
 
 import Fragments.AddFragment;
@@ -76,6 +79,8 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         switch_control();
+
+        deleteCache(DashboardActivity.this);
 
         HomeFragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -541,6 +546,27 @@ public class DashboardActivity extends AppCompatActivity {
         thread.start();
 
 
+    }
+
+    public void deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            if (dir.list() != null) {
+                deleteDir2(dir);
+            }
+        } catch (Exception e) { e.printStackTrace();}
+    }
+
+    public boolean deleteDir2(File dir) {
+        if (dir.isDirectory()) {
+            for (File child : dir.listFiles()) {
+                boolean success = deleteDir2(child);
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
     }
 
 

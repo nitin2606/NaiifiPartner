@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="Fragments.AddFragment">
 
@@ -27,291 +28,569 @@
                 android:id="@+id/add_more_layout_common"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:orientation="vertical"
-                android:padding="5dp"
-                android:layout_margin="2dp">
+                android:padding="5dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Bleach"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_bleach"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="bleach"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_bleach"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_bleach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+
+                    <GridView
+                        android:id="@+id/grid_more_bleach"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:numColumns="3"
+
+                        android:tag="bleach" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Body Polishing"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_bodyPolishing"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="bodyPolishing"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_bodyPolishing"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_bodyPolishing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_bodyPolishing"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="bodyPolishing" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Clean Up"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_cleanUp"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="cleanUp"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_cleanUp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_cleanUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_cleanUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="cleanUp" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="DTan"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_dTan"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="dTan"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_dTan"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_dTan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_dTan"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="dTan" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Facial"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_facial"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="facial"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_facial"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_facial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_facial"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="facial" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="HairColor"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_hairColor"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairColor"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_hairColor"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_hairColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_hairColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairColor" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="HairCut"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_hairCut"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairCut"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_hairCut"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_hairCut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_hairCut"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairCut" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Hair Spa"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
                     android:textSize="13dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_hairSpa"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairSpa"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_hairSpa"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_hairSpa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_hairSpa"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairSpa" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Hair Treatment"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_hairTreatment"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairTreatment"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_hairTreatment"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_hairTreatment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_hairTreatment"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairTreatment" />
 
 
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Hair Wash"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_hairWash"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairWash"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_hairWash"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_hairWash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_hairWash"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairWash" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Head Massage"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_headMassage"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="headMassage"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_headMassage"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_headMassage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_headMassage"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="headMassage" />
 
 
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Manicure"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_manicure"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="manicure"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_manicure"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_manicure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_manicure"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="manicure" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pedicure"
-                    android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="Pedicure"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/grid_more_pedicure"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="pedicure"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_pedicure"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_pedicure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_pedicure"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="pedicure" />
+
+
+                </FrameLayout>
 
 
             </LinearLayout>
@@ -338,12 +617,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_faceMask"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="faceMask"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_faceMask"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_faceMask"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_faceMask"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="faceMask"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
@@ -359,12 +660,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_hairStyling"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairStyling"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_hairStyling"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_hairStyling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_hairStyling"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="hairStyling"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
@@ -380,12 +703,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_makeUp"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="makeUp"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_makeUp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_makeUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_makeUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="makeUp"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
 
@@ -402,12 +747,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_manicureSpa"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="manicureSpa"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_manicureSpa"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_manicureSpa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_manicureSpa"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="manicureSpa"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
 
@@ -425,12 +792,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_nailArt"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="nailArt"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_nailArt"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_nailArt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_nailArt"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="nailArt"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
 
@@ -447,19 +836,41 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_shaving"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="shaving"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_shaving"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_shaving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_shaving"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="shaving"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Threding"
+                    android:text="Threading"
                     android:textSize="13dp"
                     android:gravity="center_horizontal"
                     android:fontFamily="@font/lato_bold"
@@ -469,12 +880,78 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_threading"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="threading"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_threading"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_threading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_threading"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="threading"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
+
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waxing"
+                    android:textSize="13dp"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/lato_bold"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_waxing"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_waxing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_waxing"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="waxing"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -489,12 +966,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_uni_others"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="others"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_uni_others"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_uni_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_uni_others"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="others"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
             </LinearLayout>
@@ -520,12 +1019,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_male_manicureSpa"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="manicureSpa"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_male_manicureSpa"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_male_manicureSpa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_male_manicureSpa"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="manicureSpa"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
@@ -541,12 +1062,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_male_shaving"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="pedicure"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_male_shaving"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_male_shaving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_male_shaving"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="shaving"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
@@ -562,12 +1105,34 @@
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/gradient_background_round"/>
 
-                <GridView
-                    android:id="@+id/grid_more_male_others"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="others"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_male_others"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_more_male_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <GridView
+                        android:id="@+id/grid_more_male_others"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tag="others"
+                        android:numColumns="3"/>
+
+
+                </FrameLayout>
 
 
             </LinearLayout>
@@ -577,145 +1142,372 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone"
-                android:padding="5dp">
-
+                android:padding="5dp"
+                android:visibility="gone">
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Face Mask"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_faceMask"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="faceMask"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_faceMask"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_faceMask"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_faceMask"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="faceMask" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Hair Styling"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_hairStyling"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="hairStyling"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_hairStyling"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_hairStyling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_hairStyling"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="hairStyling" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Make Up"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_makeUp"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="makeUp"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_makeUp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_makeUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_makeUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="makeUp" />
 
 
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Nail Art"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_nailArt"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="nailArt"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_nailArt"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_nailArt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_nailArt"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="nailArt" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
                     android:text="Threading"
                     android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_threading"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="threading"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_threading"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_threading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_threading"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="threading" />
+
+
+                </FrameLayout>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Waxing"
-                    android:textSize="13dp"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/gradient_background_round"/>
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="Waxing"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
-                <GridView
-                    android:id="@+id/add_more_female_waxing"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:tag="waxing"
-                    android:numColumns="3"/>
+                    android:layout_height="wrap_content">
 
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_waxing"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_waxing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_waxing"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="faceMask" />
+
+
+                </FrameLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/gradient_background_round"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="Other Services"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pro_more_female_others"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/text_more_female_others"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone" />
+
+                    <GridView
+                        android:id="@+id/grid_more_female_others"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:numColumns="3"
+                        android:tag="others" />
+
+
+                </FrameLayout>
 
 
             </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/add_floating_bt_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rippleColor="@color/purple_700"
+                    app:elevation="0dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_check"
+                    android:layout_weight="1"
+                    app:fabSize="auto"
+                    android:backgroundTint="@color/green"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/add_floating_bt_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    app:elevation="0dp"
+                    android:layout_marginBottom="5dp"
+                    app:rippleColor="@color/purple_700"
+                    android:layout_marginLeft="100dp"
+                    app:fabSize="auto"
+                    android:backgroundTint="@color/red"
+                    android:src="@drawable/ic_cross" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_linear_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/retrieve_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="45dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Save Data"/>
 
 
         </LinearLayout>
