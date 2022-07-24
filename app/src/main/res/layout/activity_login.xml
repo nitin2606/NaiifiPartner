@@ -119,7 +119,6 @@
         </LinearLayout>
 
 
-
         <TextView
             android:id="@+id/get_otp"
             android:layout_width="wrap_content"
@@ -128,6 +127,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:text="GET OTP"
+            android:visibility="invisible"
             android:textAlignment="center"
             android:textColor="@color/blue"
             android:textSize="16sp" />

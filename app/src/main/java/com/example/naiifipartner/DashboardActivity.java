@@ -67,6 +67,8 @@ public class DashboardActivity extends AppCompatActivity {
     private Switch status_switch;
     private TextView status_text , test_text;
 
+    private long backPressedTime = 0;
+
 
 
 
@@ -567,6 +569,32 @@ public class DashboardActivity extends AppCompatActivity {
             }
         }
         return dir.delete();
+    }
+
+    public void onBackPressed() {        // to prevent irritating accidental logouts
+        long t = System.currentTimeMillis();
+
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        else{
+
+            if (t - backPressedTime > 2000) {    // 2 secs
+                backPressedTime = t;
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            } else {
+
+                super.onBackPressed();
+            }
+
+        }
+
+
+
     }
 
 

@@ -43,6 +43,8 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
     private Dialog dialog1 ;
 
+    private EditFragment editFragment ;
+
 
 
     public EditDataAdapter(ArrayList<String> serviceData, Context mContext , String tag) {

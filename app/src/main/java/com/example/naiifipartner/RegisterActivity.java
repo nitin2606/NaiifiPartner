@@ -118,8 +118,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if(editable.length()<10){
                     already_user.setTextSize(15);
-                    getotp.setVisibility(View.VISIBLE);
+                    //getotp.setVisibility(View.VISIBLE);
 
+                }
+                if(editable.length()>10){
+                    phoneNo.setError("Enter a valid number .");
                 }
 
             }
@@ -444,6 +447,9 @@ public class RegisterActivity extends AppCompatActivity {
                     phoneNo.requestFocus();
                     getotp.setVisibility(View.GONE);
                     already_user.setTextSize(18);
+                }
+                else if (c==0){
+                    getotp.setVisibility(View.VISIBLE);
                 }
 
 

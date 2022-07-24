@@ -26,6 +26,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.naiifipartner.GridItemView;
 import com.example.naiifipartner.InfoActivity;
 import com.example.naiifipartner.R;
@@ -73,7 +76,7 @@ public class AddFragment extends Fragment {
     private EditText editText ;
 
     private FloatingActionButton add_floating_bt_save  ,add_floating_bt_clear ;
-    private MaterialButton retrieve_button;
+    private MaterialButton save_button;
 
 
 
@@ -126,7 +129,7 @@ public class AddFragment extends Fragment {
         add_floating_bt_save = view.findViewById(R.id.add_floating_bt_save);
         add_floating_bt_clear = view.findViewById(R.id.add_floating_bt_clear);
 
-        retrieve_button = view.findViewById(R.id.retrieve_button);
+        save_button = view.findViewById(R.id.retrieve_button);
 
         add_more_layout_common = view.findViewById(R.id.add_more_layout_common);
         add_more_layout_uni = view.findViewById(R.id.add_more_layout_uni);
@@ -271,7 +274,7 @@ public class AddFragment extends Fragment {
                         //submit.setVisibility(View.VISIBLE);
                         //scr_view.smoothScrollBy(0,80000);
                         //System.out.println(grid_data_map);
-                        System.out.println(grid_data_map);
+                       // System.out.println(grid_data_map);
 
 
                     }
@@ -299,12 +302,15 @@ public class AddFragment extends Fragment {
             }
         });
 
-        retrieve_button.setOnClickListener(new View.OnClickListener() {
+        save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                System.out.println(retrieve_edt_data(add_linear_dynamic));
+                //System.out.println(retrieve_edt_data(add_linear_dynamic));
                 processData(grid_data_map);
+                //add_linear_dynamic.removeAllViews();
+
+                //getFragmentManager().beginTransaction().detach(AddFragment.this).attach(AddFragment.this).commit();
             }
         });
 
@@ -917,17 +923,35 @@ public class AddFragment extends Fragment {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)throws NullPointerException {
                         if(task.isSuccessful()){
 
-                            for(Map.Entry<String , Object> entry : hashMap.entrySet()){
-                                String key = entry.getKey();
-                                String value = entry.getValue().toString().trim();
+                            try{
+                                for(Map.Entry<String , Object> entry : hashMap.entrySet()){
+                                    String key = entry.getKey();
+                                    String value = entry.getValue().toString().trim();
 
-                                String initialData = task.getResult().get(key).toString().trim();
 
-                                revisedMap.put(key , initialData+";"+value);
 
+                                    if(task.getResult().get(key)==null){
+                                        revisedMap.put(key ,value);
+                                    }
+                                    else{
+                                        String initialData = task.getResult().get(key).toString().trim();
+                                        revisedMap.put(key , initialData+";"+value);
+
+                                    }
+
+
+
+                                }
+
+                            }catch (NullPointerException e){
+                                Log.d("NullPointer", "onComplete: "+e.getMessage());
                             }
 
-                            System.out.println("Revised Map : " + revisedMap);
+
+
+                            //System.out.println("Revised Map : " + revisedMap);
+
+                            //System.out.println("Price Data : "+retrieve_edt_data(add_linear_dynamic));
 
                             db.collection(user).document("serviceData").update(revisedMap);
                             db.collection(user).document("priceData").update(retrieve_edt_data(add_linear_dynamic)).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -935,6 +959,9 @@ public class AddFragment extends Fragment {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(getContext(), "Services Added Successfully", Toast.LENGTH_SHORT).show();
+                                        revisedMap.clear();
+                                        Fragment navFragment = new HomeFragment();
+                                        getFragmentManager().beginTransaction().replace(R.id.fragment_container , navFragment).commit();
                                     }
                                 }
                             });
@@ -942,6 +969,7 @@ public class AddFragment extends Fragment {
                         }
                     }
                 });
+
 
             }
 
@@ -960,9 +988,5 @@ public class AddFragment extends Fragment {
 
 
     }
-
-
-
-
 
 }
