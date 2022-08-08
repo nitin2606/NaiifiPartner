@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="15dp"
+            android:background="@android:color/transparent"
             style="@style/SpinKitView.Large.MultiplePulse"
             gbp:SpinKit_Color="@color/purple_700" />
 

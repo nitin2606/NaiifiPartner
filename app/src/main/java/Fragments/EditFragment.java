@@ -315,7 +315,7 @@ public class EditFragment extends Fragment {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
 
         try{
@@ -428,7 +428,7 @@ public class EditFragment extends Fragment {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -506,7 +506,7 @@ public class EditFragment extends Fragment {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         try{
 
@@ -544,7 +544,7 @@ public class EditFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
 
         String val = materialTextView.getText().toString();

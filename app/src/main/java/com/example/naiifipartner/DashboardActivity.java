@@ -9,13 +9,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -24,7 +22,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -39,10 +36,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.io.File;
 import java.util.HashMap;
-
 import Fragments.AddFragment;
 import Fragments.EditFragment;
 import Fragments.HelpFragment;
@@ -50,9 +45,7 @@ import Fragments.HomeFragment;
 import Fragments.ImageFragment;
 import Fragments.InsightsFragment;
 import Fragments.SettingsFragment;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+
 
 
 public class DashboardActivity extends AppCompatActivity {
@@ -373,7 +366,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             db=FirebaseFirestore.getInstance();
             mAuth=FirebaseAuth.getInstance();
-            String user = mAuth.getCurrentUser().getUid().toString();
+            String user = mAuth.getCurrentUser().getUid();
 
             dialog = new Dialog(DashboardActivity.this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -384,7 +377,7 @@ public class DashboardActivity extends AppCompatActivity {
 
 
             LayoutInflater li = getLayoutInflater();
-            View layout = li.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.custom_toast_container),false);
+            View layout = li.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container),false);
             Toast toast = new Toast(getApplicationContext());
             toast.setDuration(Toast.LENGTH_SHORT);
             toast.setView(layout);
@@ -424,14 +417,14 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         LayoutInflater li = getLayoutInflater();
-        View layout = li.inflate(R.layout.custom_toast_status,(ViewGroup) findViewById(R.id.custom_toast_container),false);
+        View layout = li.inflate(R.layout.custom_toast_status, findViewById(R.id.custom_toast_container),false);
         Toast toast = new Toast(getApplicationContext());
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         HashMap<String , Object> statusMap = new HashMap<>();
 
@@ -472,13 +465,13 @@ public class DashboardActivity extends AppCompatActivity {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         db.collection(user).document("basicData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    String value = task.getResult().getString("salonStatus").toString();
+                    String value = task.getResult().getString("salonStatus");
 
                     if(value.equals("Closed")){
                         dialog.show();
@@ -498,7 +491,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         db.collection(user).document("basicData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -524,7 +517,7 @@ public class DashboardActivity extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences("NaiifiData",MODE_PRIVATE);
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         HashMap<String , Object> hashMap = new HashMap<>();
 
@@ -574,7 +567,7 @@ public class DashboardActivity extends AppCompatActivity {
     public void onBackPressed() {        // to prevent irritating accidental logouts
         long t = System.currentTimeMillis();
 
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout mDrawerLayout = findViewById(R.id.drawer_layout);
 
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
 

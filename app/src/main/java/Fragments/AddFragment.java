@@ -352,7 +352,7 @@ public class AddFragment extends Fragment {
 
         db=FirebaseFirestore.getInstance();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
 
         db.collection(user).document("basicData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -360,7 +360,7 @@ public class AddFragment extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
 
-                    String salonType = task.getResult().getString("salonCategory").toString();
+                    String salonType = task.getResult().getString("salonCategory");
 
 
                     if(salonType.equals("Unisex Salon (Male and Female Both)")){
@@ -483,7 +483,7 @@ public class AddFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         String category2 = gridView.getTag().toString().trim();
         String categ = category2.substring(0,1).toUpperCase() + category2.substring(1);
@@ -859,7 +859,7 @@ public class AddFragment extends Fragment {
 
         for(int i=0 ; i<s ;i++){
             editText = new EditText(getContext());
-            String tname = "task"+Integer.toString(i);
+            String tname = "task"+ i;
             editText.setId(i);
 
             editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_rupees,0,0,0);
@@ -901,7 +901,7 @@ public class AddFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         HashMap<String , Object> revisedMap = new HashMap<>();
 

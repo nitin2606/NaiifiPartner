@@ -44,11 +44,13 @@
         <entry key="app/src/main/res/layout/custom_extra_dialog.xml" value="0.240234375" />
         <entry key="app/src/main/res/layout/custom_image_layout.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/custom_seat_dialog.xml" value="0.241015625" />
+        <entry key="app/src/main/res/layout/dialog_wait.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/fragment_add.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.23160660660660662" />
         <entry key="app/src/main/res/layout/fragment_help.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/fragment_image.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_insights.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/test_layout.xml" value="0.240234375" />
         <entry key="app/src/main/res/menu/my_navigation_items.xml" value="0.241015625" />
       </map>

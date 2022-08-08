@@ -63,7 +63,7 @@ import Adapter.GridViewAdapter;
 public class InfoActivity extends AppCompatActivity {
 
     private static final int PICK_IMG = 1;
-    private ArrayList<Uri> ImageList = new ArrayList<Uri>();
+    private final ArrayList<Uri> ImageList = new ArrayList<Uri>();
     private int uploads = 0;
 
     private ArrayList<String> arr ;
@@ -759,7 +759,7 @@ public class InfoActivity extends AppCompatActivity {
 
         for(int i=0 ; i<s ;i++){
             editText = new EditText(this);
-            String tname = "task"+Integer.toString(i);
+            String tname = "task"+ i;
             editText.setId(i);
             idsMap.put(tname ,i);
             editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_rupees,0,0,0);
@@ -805,7 +805,7 @@ public class InfoActivity extends AppCompatActivity {
 
         dialog.show();
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         mRootRef = FirebaseDatabase.getInstance().getReference(user);
 
@@ -1080,7 +1080,7 @@ public class InfoActivity extends AppCompatActivity {
 
                                 txtLat.setText(new StringBuilder().append(currentLatitude).toString());
                                 txtLong.setText(new StringBuilder().append(currentLongitude).toString());
-                                txtPostal.setText(completeAddress.getString("postalcode").toString());
+                                txtPostal.setText(completeAddress.getString("postalcode"));
                                 txtCity.setText(completeAddress.getString("city"));
                                 txtState.setText(completeAddress.getString("state"));
 
@@ -1105,7 +1105,7 @@ public class InfoActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         arr =new ArrayList<>();
         dialog.show();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
 
         upload_image_txt.setText("Please Wait ... If Uploading takes Too much time please click the button again ");
@@ -1115,7 +1115,7 @@ public class InfoActivity extends AppCompatActivity {
         for (uploads=0; uploads < ImageList.size(); uploads++) {
             c=c+1;
 
-            String field = "url"+Integer.toString(uploads);
+            String field = "url"+ uploads;
             Uri Image  = ImageList.get(uploads);
             final StorageReference imagename = ImageFolder.child("image/"+Image.getLastPathSegment());
 
@@ -1157,14 +1157,14 @@ public class InfoActivity extends AppCompatActivity {
             HashMap<String , Object> map = new HashMap<>();
             for (int i=0 ; i<ImageList.size();i++){
 
-                String field="url"+String.valueOf(i);
+                String field="url"+ i;
                 String url=arr.get(i);
 
                 map.put(field,url);
 
             }
             mAuth=FirebaseAuth.getInstance();
-            String user = mAuth.getCurrentUser().getUid().toString();
+            String user = mAuth.getCurrentUser().getUid();
             db.collection(user).document("imageUrl").set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -1198,7 +1198,7 @@ public class InfoActivity extends AppCompatActivity {
         String state = txtState.getText().toString();
 
         mAuth=FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         String info = "complete";
         HashMap<String , Object> map  = new HashMap<>();

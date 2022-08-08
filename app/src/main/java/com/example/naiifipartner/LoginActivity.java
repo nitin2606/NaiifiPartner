@@ -238,7 +238,7 @@ public class LoginActivity extends AppCompatActivity {
                             user = FirebaseAuth.getInstance().getCurrentUser();
                             if (user !=null){
 
-                                String uid = FirebaseAuth.getInstance().getUid().toString();
+                                String uid = FirebaseAuth.getInstance().getUid();
                                 DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference("PhoneNo").child(uid);
 
                                 firebaseDatabase.addValueEventListener(new ValueEventListener() {
@@ -340,7 +340,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
 
         @Override
@@ -410,7 +410,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int c = 0;
                 for(DataSnapshot d : snapshot.getChildren()){
-                    if(d.getKey().toString().equals(phone)){
+                    if(d.getKey().equals(phone)){
                         c=c+1;
                     }
                 }

@@ -41,9 +41,10 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
-
-
 public class RegisterActivity extends AppCompatActivity {
+
+
+
 
     private TextInputLayout pass_otp;
     private String verificationId;
@@ -141,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         otp.addTextChangedListener(new TextWatcher() {
 
-            Handler handler = new Handler(Looper.getMainLooper());
+            final Handler handler = new Handler(Looper.getMainLooper());
             Runnable workRunnable;
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -311,7 +312,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
 
         @Override
@@ -375,7 +376,7 @@ public class RegisterActivity extends AppCompatActivity {
     private  void uploadData(String salonName, String phoneNo , String emailId){
         mRootRef = FirebaseDatabase.getInstance().getReference("Salons");
 
-        String firebaseId = mAuth.getCurrentUser().getUid().toString();
+        String firebaseId = mAuth.getCurrentUser().getUid();
         String salonId = getAlphaNumericString(phoneNo);
         HashMap<String,Object> map=new HashMap<>();
         map.put("name",salonName);
@@ -424,7 +425,7 @@ public class RegisterActivity extends AppCompatActivity {
             str.append(AlphaNumericString.charAt(random.nextInt(25)));
         }
 
-        return num.toString()+str.toString();
+        return num.toString()+ str;
 
     }
 
@@ -436,7 +437,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int c = 0;
                 for(DataSnapshot d : snapshot.getChildren()){
-                     if(d.getKey().toString().equals(phone)){
+                     if(d.getKey().equals(phone)){
                          c=c+1;
                      }
                 }
@@ -465,7 +466,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void writePhone(String phone){
         mPhoneRef = FirebaseDatabase.getInstance().getReference("PhoneNo");
-        String firebaseId = mAuth.getCurrentUser().getUid().toString();
+        String firebaseId = mAuth.getCurrentUser().getUid();
         HashMap<String ,Object> map = new HashMap<>();
         map.put(firebaseId, phone);
 

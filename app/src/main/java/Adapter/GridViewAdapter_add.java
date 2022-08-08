@@ -14,8 +14,8 @@ public class GridViewAdapter_add extends BaseAdapter {
 
 
 
-    private AppCompatActivity activity;
-    private String[] strings_add;
+    private final AppCompatActivity activity;
+    private final String[] strings_add;
     public List selectedPositions_add;
 
 

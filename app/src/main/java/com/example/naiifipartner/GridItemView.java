@@ -19,8 +19,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class GridItemView extends FrameLayout {
 
     private FirebaseFirestore db ;
-    private MaterialTextView textView ;
-    private MaterialCardView grid_card_view ;
+    private final MaterialTextView textView ;
+    private final MaterialCardView grid_card_view ;
 
     public GridItemView(Context context) {
         super(context);

@@ -75,7 +75,7 @@ public class ImageFragment extends Fragment {
 
 
 
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         DocumentReference docRef = rootRef.collection(user).document("imageUrl");

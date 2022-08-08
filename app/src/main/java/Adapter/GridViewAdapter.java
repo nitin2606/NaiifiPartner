@@ -15,8 +15,8 @@ import java.util.List;
 public class GridViewAdapter extends BaseAdapter {
 
 
-    private AppCompatActivity activity;
-    private String[] strings;
+    private final AppCompatActivity activity;
+    private final String[] strings;
     public List selectedPositions;
 
     public GridViewAdapter(String[] strings, AppCompatActivity activity) {

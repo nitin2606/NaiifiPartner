@@ -34,9 +34,9 @@ import Fragments.EditFragment;
 
 public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDataViewHolder> {
 
-    private ArrayList<String> serviceData;
-    private Context mContext;
-    private String tag;
+    private final ArrayList<String> serviceData;
+    private final Context mContext;
+    private final String tag;
 
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
@@ -116,7 +116,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         try{
 
@@ -155,7 +155,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
 
         dialog1 = new Dialog(mContext);
         dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -267,7 +267,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid().toString();
+        String user = mAuth.getCurrentUser().getUid();
         //System.out.println("This is recyclerviwe tag: "+t);
 
         db.collection(user).document("serviceData").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -306,7 +306,7 @@ public class EditDataAdapter extends RecyclerView.Adapter<EditDataAdapter.EditDa
                     }
 
                     else{
-                        String arr1[]  = new String[arr.length-1];
+                        String[] arr1 = new String[arr.length-1];
 
                         for(int i=0 , k=0 ; i<arr.length ; i++){
                             if(!service.equals(arr[i])){

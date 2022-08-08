@@ -4,8 +4,10 @@ package com.example.naiifipartner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 public class SplashScreen extends AppCompatActivity {
 
 
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -26,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
 
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -42,7 +43,7 @@ public class SplashScreen extends AppCompatActivity {
 
             try {
 
-                String uid = FirebaseAuth.getInstance().getUid().toString();
+                String uid = FirebaseAuth.getInstance().getUid();
                 DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference("PhoneNo").child(uid);
 
                 firebaseDatabase.addValueEventListener(new ValueEventListener() {
@@ -94,8 +95,6 @@ public class SplashScreen extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }

@@ -19,8 +19,8 @@ import java.util.HashMap;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.AppointmentViewHolder> {
 
-    private Context mContext ;
-    private ArrayList<HashMap<String , String>> arrayList ;
+    private final Context mContext ;
+    private final ArrayList<HashMap<String , String>> arrayList ;
 
     public AppointmentAdapter (ArrayList<HashMap<String , String>> arrayList , Context mContext){
 
@@ -44,10 +44,10 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(@NonNull AppointmentAdapter.AppointmentViewHolder holder, int position) {
 
-        holder.unique_id.setText(arrayList.get(position).get("id").toString());
-        holder.appointment_cost.setText(arrayList.get(position).get("cost").toString());
-        holder.appointment_services.setText(arrayList.get(position).get("services").toString());
-        holder.appointment_time.setText(arrayList.get(position).get("time").toString());
+        holder.unique_id.setText(arrayList.get(position).get("id"));
+        holder.appointment_cost.setText(arrayList.get(position).get("cost"));
+        holder.appointment_services.setText(arrayList.get(position).get("services"));
+        holder.appointment_time.setText(arrayList.get(position).get("time"));
 
     }
 
@@ -58,7 +58,10 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public class AppointmentViewHolder extends RecyclerView.ViewHolder{
 
-        private MaterialTextView unique_id , appointment_time , appointment_services , appointment_cost ;
+        private final MaterialTextView unique_id;
+        private final MaterialTextView appointment_time;
+        private final MaterialTextView appointment_services;
+        private final MaterialTextView appointment_cost ;
 
         public AppointmentViewHolder(@NonNull View itemView) {
             super(itemView);

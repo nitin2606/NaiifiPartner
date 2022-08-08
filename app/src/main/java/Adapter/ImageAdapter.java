@@ -20,8 +20,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @NonNull
 
 
-    private Context mComtext ;
-    private Map<String,Object> map ;
+    private final Context mComtext ;
+    private final Map<String,Object> map ;
 
 
     public ImageAdapter(Context mComtext , Map<String,Object> map){
@@ -40,8 +40,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
 
-        Picasso.get().load(String.valueOf(map.get("url"+String.valueOf(position)))).fit().into((holder.zoom_imageView));
-        holder.zoom_imageView.setTag("url"+String.valueOf(position));
+        Picasso.get().load(String.valueOf(map.get("url"+ position))).fit().into((holder.zoom_imageView));
+        holder.zoom_imageView.setTag("url"+ position);
 
         holder.zoom_imageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -60,8 +60,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView zoom_imageView ;
-        private ProgressBar image_progressBar ;
+        private final ImageView zoom_imageView ;
+        private final ProgressBar image_progressBar ;
 
 
         public ViewHolder(@NonNull View itemView) {
