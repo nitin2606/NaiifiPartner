@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,7 +51,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.shivtechs.maplocationpicker.LocationPickerActivity;
 import com.shivtechs.maplocationpicker.MapUtility;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -77,7 +77,6 @@ public class InfoActivity extends AppCompatActivity {
             category_shaving , category_manicurespa , category_hair_styling , category_threading , category_waxing , category_facemask , category_nailart , category_makeup;
 
     private MaterialTextView seat_aval , price_instruction ,  txtLat , txtLong ,txtCity , txtState , time_opening , time_closing;
-
 
 
 
@@ -1190,12 +1189,15 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void uploadLocation(){
+
         String address = txtAddress.getText().toString();
         String pincode = txtPostal.getText().toString();
         String latitude = txtLat.getText().toString();
         String longitude = txtLong.getText().toString();
         String city = txtCity.getText().toString();
         String state = txtState.getText().toString();
+
+        Log.d("tagCity", "uploadLocation: "+city);
 
         mAuth=FirebaseAuth.getInstance();
         String user = mAuth.getCurrentUser().getUid();
@@ -1209,6 +1211,43 @@ public class InfoActivity extends AppCompatActivity {
         map.put("longitude",longitude);
         map.put("city",city);
         map.put("state",state);
+
+
+        DatabaseReference rdb = FirebaseDatabase.getInstance().getReference("PhoneNo");
+        rdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String number = snapshot.child(user).getValue().toString();
+                Log.d("testData", "onDataChange: " + number);
+                SharedPreferences sharedPreferences = getSharedPreferences("userNumber",MODE_PRIVATE);
+                SharedPreferences.Editor myEditor = sharedPreferences.edit();
+                myEditor.putString("phoneNo", number);
+
+                myEditor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userNumber", MODE_APPEND);
+        String number = sharedPreferences.getString("phoneNo","");
+
+        HashMap<String, Object> newMap = new HashMap<>();
+        newMap.put("city", city);
+
+        DatabaseReference rdb1 = FirebaseDatabase.getInstance().getReference("Salons");
+
+        rdb1.child(number).child("city").setValue(map.get("city")).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Log.d("testData", "City Updated : "+map.get("city"));
+            }
+        });
 
 
         db.collection(user).document("locationData").set(map).addOnCompleteListener(new OnCompleteListener<Void>() {

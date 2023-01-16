@@ -44,8 +44,6 @@ import java.util.concurrent.TimeUnit;
 public class RegisterActivity extends AppCompatActivity {
 
 
-
-
     private TextInputLayout pass_otp;
     private String verificationId;
     private ProgressBar progressBar;
@@ -76,8 +74,6 @@ public class RegisterActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setNavigationBarColor(getResources().getColor(R.color.white));
         initElements();
-
-
 
 
     }
@@ -378,12 +374,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         String firebaseId = mAuth.getCurrentUser().getUid();
         String salonId = getAlphaNumericString(phoneNo);
-        HashMap<String,Object> map=new HashMap<>();
+        HashMap<String,Object> map = new HashMap<>();
         map.put("name",salonName);
         map.put("email",emailId);
         map.put("phoneNo",phoneNo);
         map.put("firebaseId",firebaseId);
         map.put("salonId",salonId);
+        map.put("city", "");
         map.put("vstatus","unverified");
         map.put("info","incomplete");
 
@@ -401,6 +398,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Some error occurred !", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     public void onBackPressed(){

@@ -34,7 +34,7 @@
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.324" />
         <entry key="app/src/main/res/drawable/ic_add_circle.xml" value="0.324" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.241015625" />
-        <entry key="app/src/main/res/layout/activity_info.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_info.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20296052631578948" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.241015625" />
         <entry key="app/src/main/res/layout/basic_edit_layout.xml" value="0.32135416666666666" />

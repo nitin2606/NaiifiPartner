@@ -1,7 +1,5 @@
 package com.example.naiifipartner;
 
-
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -34,6 +32,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.File;
@@ -51,18 +54,16 @@ import Fragments.SettingsFragment;
 public class DashboardActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     private ImageView menuIcon;
-    private FirebaseFirestore db;
     private Fragment navFragment ;
-
     private Dialog dialog;
     private Switch status_switch;
     private TextView status_text , test_text;
-
     private long backPressedTime = 0;
 
-
+    private  DatabaseReference databaseReference;
 
 
 
@@ -98,12 +99,31 @@ public class DashboardActivity extends AppCompatActivity {
         status_text = header.findViewById(R.id.status_text);
 
 
-
-
-
-
-
         String[] seats =  {"1","2","3","4","5","6","7","8","9","10","11"};
+
+        String user = mAuth.getCurrentUser().getUid();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("PhoneNo");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String number = snapshot.child(user).getValue().toString();
+                Log.d("testData", "onDataChange: " + number);
+                SharedPreferences sharedPreferences = getSharedPreferences("userNumber",MODE_PRIVATE);
+                SharedPreferences.Editor myEditor = sharedPreferences.edit();
+                myEditor.putString("phoneNo", number);
+                myEditor.commit();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
 
 
@@ -138,7 +158,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull  MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int id = item.getItemId();
 
@@ -278,8 +298,6 @@ public class DashboardActivity extends AppCompatActivity {
 
                         dialog.show();
                         break;
-
-
 
 
                     case R.id.nav_share:
@@ -587,12 +605,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
 
-
     }
-
-
-
-
 
 
   }
